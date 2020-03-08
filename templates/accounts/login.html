@@ -1,0 +1,41 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户登录</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css"/>
+</head>
+<body>
+<div class="cont" >
+    <div class="login-img" >
+        <img src="{% static 'images/logo01.png' %}">
+    </div>
+    <div class="fr" >
+<form action="/login/" method="POST">
+  <div class="header">
+    <h1 >用户登录</h1>
+      <span><a href="/forget/">找回密码</a> &nbsp; 没有账号?--<a href="/register/">注册</a></span></span>
+  </div>
+  <div class="content">
+{{ error_message }}
+    <div class="form-row">
+      <label for="username"></label>
+      <input id='username' name="username" type="text" placeholder="请输入用户名">
+    </div>
+    <div class="form-row">
+      <label for="password"></label>
+      <input id='password' name="password" type="password" placeholder="请输入密码">
+    </div>
+    <div class="form-row submit" >
+      <button type="submit" >登录</button>
+    </div>
+  </div>
+</form>
+        </div>
+</div>
+</body>
+</html>

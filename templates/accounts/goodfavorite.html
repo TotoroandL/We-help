@@ -1,0 +1,78 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="nav1">
+  <div class="item home">
+      <img src="{% static 'images/icon/icon01.jpg' %}" class="nav-img">
+    <a href="/index/">个人资料</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon02.png' %}" class="nav-img">
+    <a href="/reset_pw/">修改密码</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon03.jpg' %}" class="nav-img">
+    <a href="/send/">已发订单</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon04.png' %}" class="nav-img">
+    <a href="/task/">已接订单</a>
+  </div>
+        <div class="item">
+            <img src="{% static 'images/icon/icon05.jpg' %}" class="nav-img">
+      <a href="/collection/">我收藏的订单</a>
+  </div>
+       <div class="item">
+           <img src="{% static 'images/icon/icon06.jpg' %}" class="nav-img">
+      <a href="/goodfavorite/">我收藏的商品</a>
+  </div>
+     <div class="item">
+         <img src="{% static 'images/icon/icon07.jpg' %}" class="nav-img">
+      <a href="/collection_c/">我收藏的大赛</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon08.png' %}" class="nav-img">
+    <a href="/tags/">达人认证</a>
+  </div>
+
+  <div class="item">
+      <img src="{% static 'images/icon/icon09.png' %}" class="nav-img">
+    <a href="/logout/">注销登录</a>
+  </div>
+</div>
+
+<div class="content">
+  <table>
+      <tr>
+      <th>收藏的商品</th>
+      <th>收藏者</th>
+          <th>收藏时间</th>
+      </tr>
+
+      {% for goodfavorite in goodfavorite %}
+          <tr>
+      <td>{{ goodfavorite.good }}</td>
+      <td>{{ goodfavorite.user }}</td>
+      <td>{{ goodfavorite.favorite_time }}</td>
+          </tr>
+
+      {% endfor %}
+  </table>
+</div>
+
+
+<script>
+$(function() {
+  if ((location.pathname.split("/")[1]) !== ""){
+    $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').parent(".item").addClass('active');
+  } else {
+    $('.home').addClass('active');
+  }
+});
+</script>
+{% endblock %}

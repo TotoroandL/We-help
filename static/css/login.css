@@ -1,0 +1,141 @@
+body {
+  background: url("../images/air01.png") #f8f8f8 100%;
+  background-size: cover;
+  font-size: 14px;
+  font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.cont{
+  width: 100%;
+  height: calc(100vh);
+  background: url("../images/air06.png") no-repeat center top;
+  background-size: cover;
+  float:left;
+}
+@media screen and (max-width: 1000px) {
+  .cont{
+    height: calc(100vw * 0.469); } }
+@media screen and (max-width: 400px) {
+  .cont {
+    height: calc(100vw * 0.23); } }
+.login-img{
+  width: 15%;
+  padding-top: 18%;
+  padding-left: 18%;
+  float: left;
+}
+@media screen and (max-width: 1000px) {
+  .login-img{
+    height: calc(100vw * 0.469);
+    padding-top: 18%;
+  padding-left: 21%;
+  } }
+@media screen and (max-width: 400px) {
+  .login-img {
+    height: calc(100vw * 0.23); } }
+.fr {
+  width: 400px;
+  height: 400px;
+  position: center;
+  padding-top: 13%;
+  padding-left: 0%;
+  padding-right: 18%;
+  float: right;
+}
+@media screen and (max-width: 1000px) {
+  .fr{
+    height: calc(100vw * 0.469);
+    opacity: 20%;
+    padding-top: 0%;
+  padding-right: 29%;} }
+@media screen and (max-width: 400px) {
+  .fr {
+    opacity: 20%;
+    height: calc(100vw * 0.23);
+      padding-top:0%;
+  padding-left: 20%;} }
+ form {
+  background: #ffffff;
+  border: 1px solid #c89eff;
+  overflow: hidden;
+  width: 28em;
+  min-width: 300px;}
+
+form .header {
+  height: auto;
+  width: auto;
+  padding: 5px 16px 0px;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+
+form .header h1 {
+  font-size: 23px;
+  color: #050505;
+  margin-left:10%;
+  font-family: "等线 Light";
+}
+form .header span {
+  font-size: 14px;
+  color: #050505;
+  margin-left:50%;
+  font-family: 等线;
+}
+ .header a{
+  color: #000000;
+}
+ .header a:hover{
+  color: #a250ff;
+}
+
+form .content {
+  padding: 0px 20px 0;
+  min-height: 70px;
+}
+
+.form-row {
+  padding: 4px 11%;
+  float: left;
+  width: 260px;
+  height: 50px;
+}
+
+label {
+  padding-right: 0.5em;
+  line-height: 2em;
+  font-size: 1em;
+  clear: both;
+  color: #333;
+}
+
+input {
+  width: 270px;
+  height: 40px;
+  padding-left: 1%;
+  box-sizing: border-box;
+  border: 1px solid #b458ff;
+  border-radius: 4px;
+
+}
+
+.form-row.submit {
+  display: flex;
+  justify-content: center;
+  width: 270px;
+  height: 40px;
+  padding: 32px 11%;
+}
+
+.form-row.submit button {
+  background-color: #9a50c8;
+  padding: 10px 15px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 270px;
+  height: 40px;
+  font-size: 1.5em;
+}

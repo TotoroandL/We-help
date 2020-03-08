@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}填写成功 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div class="main-inner body-width">
+    <a href="send_category.html" class="cate"><<返回发单首页</a>
+      <div class="banner clearfix">
+      {% if task_list %}
+          {% for tasksend in task_list %}
+        <div class="slider" id="slider">
+          <ul class="slider-wrapper">
+            <li class="item" data-title="(・●・)">
+              <img src="/media/{{ tasksend.task_img }}" alt="#" width="500px">
+            </li>
+          </ul>
+        </div>
+         <div class="banner-info">
+          <div class="news body-border">
+            <ul>
+              <li class="rec">
+                  <p class="info">类型：{{ tasksend.task_category}}</p>
+                  <p class="info">任务时间：{{ tasksend.task_time}}</p>
+                  <p class="info">任务地点：{{ tasksend.task_place}}</p>
+                  <p class="info">报酬：{{ tasksend.task_reward}}</p>
+                  <p class="info">接单者：{{ tasksend.sender.username}}</p>
+                  <p class="info">接单者ID：{{ tasksend.sender.id}}</p>
+                  <p class="info">发出时间：{{ tasksend.task_send_time}}</p>
+                  <div class="bton">
+                      <a href="{% url 'Send:reset' tasksend.task_id %}"  style="background-color: #FFFFFF;"><button class="add">修改订单</button></a>
+                      <a href="{% url 'Send:del_send_suc' tasksend.task_id %}" style="background-color: #FFFFFF;"><button class="add">删除订单</button></a>
+                  </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+            {% else %}
+                <p>没有详情！</p>
+            {% endif %}
+      </div>
+        <div class="main-cont main-recommend">
+            <div class="main-cont__title">
+                      <h3>历史发单</h3>
+                      <p class="list">
+                  </div>
+                  {% if tasksend_list %}
+
+                          <ul class="main-cont__list clearfix">
+                              {% for tasksend in tasksend_list %}
+                              <li class="item">
+                                  <img src="/media/{{ tasksend.task_img }}" alt="#" class="img">
+                                  <div class="info">
+                                      <a href="#" class="title">类型：{{ tasksend.task_category}}</a>
+                                      <span><span class="bb" >¥</span>&nbsp;{{ tasksend.task_reward}}</span>
+                                      <a href="{% url 'Send:send_details' tasksend.task_id %}" class="icon-text__pink purchase">详情</a>
+                                  </div>
+                              </li>
+                          {% endfor %}
+                          </ul>
+
+                  {% else %}
+                      <p>没有历史发单</p>
+                  {% endif %}
+          </div>
+    </div>
+  </div>
+
+{% endblock %}

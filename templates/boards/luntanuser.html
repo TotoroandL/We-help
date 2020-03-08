@@ -1,0 +1,49 @@
+{% extends 'boards/base.html' %}
+{% load humanize %}
+{% load staticfiles %}
+<html>
+  <head>
+     <link rel="stylesheet" href="{% static 'css/luntanuser.css' %}">
+    {% block stylesheet %}{% endblock %}
+  </head>
+{% block title %}
+  {{ topic.name }} - {{ block.super }}
+{% endblock %}
+
+{% block css %}
+  <style>
+.divcss5{
+
+     width:200px; height:350px;
+     overflow:hidden
+     position:relative; right:100px;
+     margin-left:450px;
+     margin-top:70px
+     }
+    .divcss5 img{
+    max-width:250px;
+    _width:expression(this.width>300? "300px" :this.width);
+    }
+  </style>
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'luntan' %}"><font color="white">论坛</font></a></li>
+  <li class="breadcrumb-item active"><font color="white">{{ topic.board.name }}</font></li>
+{% endblock %}
+
+{% block content %}
+
+  <div class ="divcss5" style=" text-align:center">
+<img src="/media/{{ user.avatar }}" class="master_img">
+  </div>
+  <div style=" text-align:center; margin-bottom:100px;margin-top:-100px">
+<h6>用户名：{{ topic.starter.username }}</h6>
+<h6>学院：{{topic.starter.college}}</h6>
+<h6>专业: {{topic.starter.major}}</h6>
+<h6>帖子发帖时间：{{ topic.last_updated|naturaltime }}</h6>
+<h6>帖子浏览次数：{{topic.views}}</h6>
+  </div>
+{% endblock %}
+
+</html>

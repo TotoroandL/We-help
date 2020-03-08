@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}接单成功 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width" style="margin-bottom: 20px">
+          <a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a>
+          <div class="banner clearfix">
+              {% if task_take %}
+                  <div class="slider" id="slider">
+                      <ul class="slider-wrapper">
+                         <li class="item" data-title="(・●・)">
+                            <img src="/media/{{ task_take.task_send_id.task_img }}" alt="#" size="cover">
+                         </li>
+                      </ul>
+                  </div>
+         <div class="banner-info">
+          <div class="news body-border">
+             <ul>
+                <li class="rec">
+                  <p class="info">类型：{{ task_take.task_send_id.task_category}}</p>
+                  <p class="info">任务时间：{{ task_take.task_send_id.task_time}}</p>
+                  <p class="info">任务地点：{{ task_take.task_send_id.task_place}}</p>
+                  <p class="info">报酬：{{ task_take.task_send_id.task_reward}}</p>
+                  <p class="info">发单者：{{ task_take.task_send_id.sender.username}}</p>
+                  <p class="info">接单者：{{ task_take.task_taker_id.username}}</p>
+                  <p class="info">接单时间：{{ task_take.task_take_time}}</p>
+                  <div class="bton">
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+            {% else %}
+                <p><h6>没有详情！</h6></p>
+            {% endif %}
+      </div>
+          <div class="main-cont main-recommend" style="margin-top: 40px">
+              <div style="margin: 0px auto;text-align: center;width: 100%;" class= "main-cont__title" >
+                  <h3 style="font-size: 30px;font-weight: 700;">历&nbsp;史&nbsp;接&nbsp;单</h3>
+                  <p class="list">
+              </div>
+                  {% if tasktakes %}
+                      <ul class="main-cont__list clearfix">
+                          {% for tasktake in tasktakes %}
+                              <li class="item">
+                                  <img src="/media/{{ tasktake.task_send_id.task_img }}" alt="#" class="img">
+                                  <div class="info">
+                                      <a href="#" class="title">发单人：
+                                          {% if tasktake.task_send_id.sender.username %}
+                                              {{ tasktake.task_send_id.sender.username }}
+                                          {% else %}
+                                               {{ tasktake.task_send_id.sender.name }}
+                                          {% endif %}
+                                      </a>
+                                      <span><span class="bb" >¥</span>&nbsp;{{ tasktake.task_send_id.task_reward }}</span>
+                                  </div>
+                              </li>
+                          {% endfor %}
+                      </ul>
+                  {% else %}
+                      <p><h6>当前还没有历史接单！</h6></p>
+                  {% endif %}
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

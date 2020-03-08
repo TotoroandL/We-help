@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}发布任务 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/sd_cate.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div class="main-inner body-width">
+      <div class="banner clearfix">
+        <div class="slider" id="slider">
+          <ul class="slider-wrapper">
+              <a href="{% url 'Send:add_order' %}" ><li class="item" data-title="普通发单"></a>
+              <div class="pic"><img src="{% static 'images/dm06.png' %}" alt="#"></div>
+            </li>
+          </ul>
+          <div class="slider-title">
+              <a href="{% url 'Send:add_order' %}" ><h2>普通发单</h2></a>
+          </div>
+        </div>
+         <div class="banner-info">
+          <div class="news body-border">
+            <ul>
+              <li class="rec" style="background: url({% static 'images/dm01.png'%}) no-repeat; border: #bcade4 1px solid">
+                <a href="{% url 'Send:popular_master' %}"> <b><u>找找达人</u></b></a>
+              </li>
+              <li class="pop" style="background: url({% static 'images/dm02.png'%}) no-repeat right; border: #bcade4 1px solid">
+                 <a href="{% url 'Send:popular_good' %}"><b><u>淘点商品</u></b></a>
+              </li>
+              <li class="all" style="background: url({% static 'images/dm01.png'%}) no-repeat left; border: #bcade4 1px solid">
+                 <a href="{% url 'Send:add_competition' %}"><b><u>发布大赛</u></b></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <form></form>
+{% endblock %}

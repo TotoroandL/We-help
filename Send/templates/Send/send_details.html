@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}订单详情 {% endblock %}
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div class="main-inner body-width">
+    <a href="{% url 'Send:send_category'%}" class="cate"><<返回发单首页</a>
+    {% if tasksend %}
+      <div class="banner clearfix">
+        <div class="slider" id="slider">
+          <ul class="slider-wrapper">
+            <li class="item" data-title="(・●・)">
+              <img src="/media/{{ tasksend.task_img }}" alt="#" size="cover" style="width:500px; height: 445px" >
+            </li>
+          </ul>
+        </div>
+         <div class="banner-info">
+          <div class="news body-border">
+            <ul>
+              <li class="rec">
+                  <p class="info">订单编号：{{ tasksend.task_id }}</p>
+                  <p class="info">类型：{{ tasksend.task_category}}</p>
+                  <p class="info">报酬：{{ tasksend.task_reward}}</p>
+                  <p class="info">订单状态：{{ tasksend.task_state }}</p>
+                  <p class="info">任务地点：{{ tasksend.task_place}}</p>
+                  <p class="info">任务时间：{{ tasksend.task_time}}</p>
+                  <p class="info">发出时间：{{ tasksend.task_send_time}}</p>
+                  <p class="info">任务描述：{{ tasksend.task_details }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+                    {% else %}
+                <p>没有详细信息</p>
+            {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

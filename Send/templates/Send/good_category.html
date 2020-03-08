@@ -1,0 +1,91 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}更多商品 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/rec_gd.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+      <span class="aa"><a href="{% url 'Send:popular_good'%}"><<返回</a></span>
+          <div class="banner clearfix">
+              <div class="main-cont main-cate">
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background: url({% static 'images/dm21.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:recommend_good' %}" class="info-title"><p><b><u>推荐</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm22.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:popular_good' %}" class="info-title"><p><b><u>热门</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm23.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:goods' %}" class="info-title"><p><b><u>所有</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="main-cont main-user">
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background: url(../../static/images/my/pip02.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 1 %}" class="info-title"><p><b>{% if good_type.good_type_id == 1 %}食&nbsp;&nbsp;品{% else %}<u>食&nbsp;&nbsp;品</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url(../../static/images/my/pip03.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 2 %}" class="info-title"><p><b>{% if good_type.good_type_id == 2 %}衣&nbsp;&nbsp;服{% else %}<u>衣&nbsp;&nbsp;服</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url(../../static/images/my/pip04.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 3 %}" class="info-title"><p><b>{% if good_type.good_type_id == 3 %}家&nbsp;&nbsp;具{% else %}<u>家&nbsp;&nbsp;具</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url(../../static/images/my/pip05.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 4 %}" class="info-title"><p><b>{% if good_type.good_type_id == 4 %}书&nbsp;&nbsp;籍{% else %}<u>书&nbsp;&nbsp;籍</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url(../../static/images/my/pip06.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 5 %}" class="info-title"><p><b>{% if good_type.good_type_id == 5 %}文&nbsp;&nbsp;具{% else %}<u>文&nbsp;&nbsp;具</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url(../../static/images/my/pip07.png) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:good_category' 6 %}" class="info-title"><p><b>{% if good_type.good_type_id == 6 %}其&nbsp;&nbsp;它{% else %}<u>其&nbsp;&nbsp;它</u>{% endif %}</b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+{#商品列表#}
+          <div class="main-cont main-recommend">
+              <div class="main-cont__title">
+                      <h3>所有&nbsp;{{ good_type.good_type_name|capfirst }}</h3>
+                      <p class="list">
+                  </div>
+                  <ul class="main-cont__list clearfix">
+                      {% for good in good_list %}
+                          <li class="item">
+                              <img src="/media/{{good.good_portrait }}" alt="#" class="img">
+                              <div class="info">
+                                  <a href="{% url 'Send:good_details' good.good_id %}" class="title">{{ good.good_name}}</a>
+                                  <span><span class="pp">❤</span> {{ good.fav|add:good.car}}&nbsp;&nbsp;&nbsp;</span>
+                                  <span><span class="bb" >¥</span>&nbsp;{{ good.good_prize}}</span>
+                                  <a href="{% url 'Send:good_details' good.good_id %}" class="icon-text__pink purchase">详情</a>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  </ul>
+          </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'boards/base.html' %}
+{% block title %}
+联系我们
+{% endblock %}
+
+{% block breadcrumb %}
+
+{% endblock %}
+
+{% block content %}
+
+<div style="text-align:center;font-size:45px" ><font color="#3b1b55">联系我们</font></div>
+  <form method="post" class="mb-4",style="height:80%;width:20%;">
+    {% csrf_token %}
+    {% include 'boards/includes/form.html' %}
+    <a href="/" button type="submit" class="btn btn-success" style="float:right; background-color: #B766AD">发送</a>
+	<a href="/" class="btn btn-outline-secondary" style="float:right" role="button">取消</a>
+  </form>
+<div style="text-align:center;font-size:25px;margin-bottom: 50px; margin-top: 100px;"> 如果您对我们产品不太满意，或者有想提出意见的地方，请提交表单，联系我们</div>
+<div style="text-align:center;font-size:25px;margin-bottom: 100px; margin-top: 50px;"> 您也可以通过以下方式联系到我们：</div>
+
+
+{% endblock %}

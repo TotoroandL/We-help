@@ -1,0 +1,76 @@
+{% extends 'accounts/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}
+信件详情
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock %}
+   {% block content %}
+<div class="nav1">
+
+               <div class="item home">
+                   <img src="{% static 'images/icon/system_message.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:system_message' %}">系统通知</a>
+               </div>
+               <div class="item">
+                   <img src="{% static 'images/icon/person_message.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:person_message'%}">收信箱</a>
+               </div>
+               <div class="item">
+                   <img src="{% static 'images/icon/message_by_me.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:message_by_me'%}">已发私信</a>
+               </div>
+              <div class="item">
+                  <img src="{% static 'images/icon/message_marked.jpg' %}" class="nav-img">
+                  <a href="{% url 'Communication:marked_message'%}">特别标注</a>
+              </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/chat.jpg' %}" class="nav-img">
+                    <a href="{% url 'Communication:chat'%}">聊天室</a>
+               </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/message_read.jpg' %}" class="nav-img">
+                    <a href="{% url 'Communication:message_read' %}">已读信息</a>
+               </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/write_message.png' %}" class="nav-img">
+                   <a href="{% url 'Communication:write_message'%}">写信</a>
+               </div>
+              <div class="item">
+                  <img src="{% static 'images/icon/contact_us.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:contact_us'%}">反馈</a>
+               </div>
+            </div>
+
+     <div class="content">
+
+         <div class="panel-heading"style="background-color:#C1C3D1;border-color:white;font-size: 15px">
+        信息详情
+         </div>
+
+         <div style="margin-top: 20px">发件人姓名：{{ message.message_sender }}</div>
+         <div style="margin-top: 20px">收件人姓名：{{ message.message_receiver }}</div>
+
+                            <div style="margin-top: 20px">
+                                邮件内容
+                            </div>
+                             <textarea cols="100" rows="15" name="message"> {{ message.txtmessage }}
+                            </textarea>
+
+
+         <div >
+                     <a href="{% url 'Communication:write_message'%}"><u>回复</u></a>
+         </div>
+
+     </div>
+
+
+
+
+
+        {% endblock%}

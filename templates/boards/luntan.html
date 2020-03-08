@@ -1,0 +1,95 @@
+{% extends 'boards/base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active"><font color="white">论坛</font></li>
+{% endblock %}
+
+{% block content %}
+            <form class="navbar-form" method="get" action="/search_subject">
+                <div class="form-group">
+                    <input name="subject" type="text" placeholder="Subject" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success" style="background-color:#B766AD">Search</button>
+            </form>
+<div>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>板块名</th>
+        <th>回复数</th>
+        <th>话题数</th>
+        <th>最近回复</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for board in boards %}
+        <tr>
+          <td>
+            <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+            <small class="text-muted d-block">{{ board.description }}</small>
+          </td>
+          <td class="align-middle">
+            {{ board.get_posts_count }}
+          </td>
+          <td class="align-middle">
+            {{ board.topics.count }}
+          </td>
+          <td class="align-middle">
+            {% with post=board.get_last_post %}
+              {% if post %}
+                <small>
+                  <a href="{% url 'topic_posts' board.pk post.topic.pk %}">
+                    由 {{ post.created_by.username }} 创建于 {{ post.created_at }}
+                  </a>
+                </small>
+              {% else %}
+                <small class="text-muted">
+                  <em>没有回复.</em>
+                </small>
+              {% endif %}
+            {% endwith %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<table class="table" style="margin-bottom: 100px">
+    <thead class="thead-inverse">
+    <h4>推荐阅读</h4>
+      <tr>
+        <th>主题</th>
+        <th>发起人</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+    <tr>
+    <td class="align-middle">
+    {% with post=post.get_last_post %}
+      {% if post %}
+        <small>
+          <a href="{% url 'topic_posts' board.pk post.topic.pk %}">
+            {{ post.topic }}
+          </a>
+        </small>
+      {% endif %}
+    {% endwith %}
+    </td>
+    <td class="align-middle">
+    {% with post=post.get_last_post %}
+      {% if post %}
+        <small>
+          <a href="{% url 'topic_posts' board.pk post.topic.pk %}">
+            {{ post.created_by.username }}
+          </a>
+        </small>
+      {% endif %}
+    {% endwith %}
+    </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

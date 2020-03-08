@@ -1,0 +1,24 @@
+{% extends 'boards/base.html' %}
+
+{% load static %}
+
+{% block title %}举报{% endblock %}
+
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+<li class="breadcrumb-item"><a href="/boards/{{topic.board.id}}/"><font color="white">{{ topic.board.name }}</font></a></li>
+<li class="breadcrumb-item"><a href="{% url 'topic_posts' topic.board.pk topic.pk %}"><font color="white">{{ topic.subject }}</font></a></li>
+<li class="breadcrumb-item active"><font color="white">举报</font></li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" class="mb-4">
+    {% csrf_token %}
+    {% include 'boards/includes/form.html' %}
+
+    <a href="{% url 'topic_posts' topic.board.pk topic.pk %}" button type="submit" class="btn btn-success" style="background-color: #B766AD;float:right;margin-bottom:40px">举报</a>
+	<a href="{% url 'topic_posts' topic.board.pk topic.pk %}" class="btn btn-outline-secondary" role="button" style="float:right;margin-bottom:40px">取消</a>
+
+  </form>
+{% endblock %}

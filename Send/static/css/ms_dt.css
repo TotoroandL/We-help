@@ -1,0 +1,230 @@
+
+.body-width {
+  width: 1200px;
+  margin: 0 auto;
+}
+/* ====== main ====== */
+.main {
+  position: relative;
+  padding-bottom: 80px;
+  background-color: #fcffff;
+}
+.main-inner  {
+  padding-top: 40px;
+}
+.banner {
+  position: relative;
+    padding-left: 20%;
+  height: 445px;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 445px;
+  height: 445px;
+  box-shadow: 0 0 10px rgba(105, 8, 182, 0.84);
+}
+.slider-wrapper {
+  position: relative;
+}
+.slider .item {
+  float: left;
+  width: 710px;
+  height: 445px;
+}
+.slider .pic,
+.slider .pic img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-info {
+
+  position: relative;
+  float: right;
+  height: 135px;
+}
+.banner-info a {
+
+  display: inline-block;
+}
+
+
+.banner-info .news li.rec {
+  padding-left: 30px;
+  height: 445px;
+  width: 466px;
+  line-height:50px;
+    color: #ffffff;
+}
+.banner-info .news li.rec p.info{
+  padding-left: 0px;
+  height: 50px;
+  line-height:100px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.banner-info .bton{
+    margin-top: 35px;
+    float:left;
+}
+.banner-info .like{
+    padding-left: -10%;
+    width: 100px;
+    font-family: 仿宋体;
+      height: 40px;
+  line-height:40px;
+        font-size:1.5em ;
+    background-color: #6f0eb2;
+    border:1px #520a84 solid;
+}
+.banner-info .fav{
+    width: 100px;
+    font-family: 仿宋体;
+      height: 40px;
+  line-height:40px;
+        font-size:1.5em ;
+    background-color: #6f0eb2;
+    border:1px #520a84 solid;
+}
+.banner-info .bton a{
+background-color: #6f0eb2;
+          height: 40px;
+}
+.banner-info .bton a:hover{
+color: none;
+}
+.banner-info .add{
+    width: 100px;
+    font-family: 仿宋体;
+      height: 40px;
+  line-height:40px;
+        font-size:1.5em ;
+    text-align: center;
+    background-color:#7b0fc6;
+    border:1px #520a84 solid;
+    color: #ffffff;
+}
+
+.cate {
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: #5c5c5c;
+  margin-bottom: 20px;
+}
+
+
+/* ====== 内容列表 ====== */
+.main-cont__title {
+  position: relative;
+  height: 88px;
+  margin-top: 40px;
+  border-top: 1px solid #bcade4;
+}
+.main-cont__title h3 {
+  font-size: 18px;
+  line-height: 88px;
+}
+.main-cont__title .more {
+  position: absolute;
+  right: 0;
+  top: 28px;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background-color: #22b4f6;
+  text-decoration: none;
+  font-size: 12px;
+}
+.main-cont__title .more:hover {
+  background-color: #1e9ed8;
+}
+.main-cont__list {
+  margin-right: -20px;
+}
+.main-cont__list .item {
+  position: relative;
+  top: 0;
+  float: left;
+  width: 224px;
+  margin-right: 20px;
+  border: 1px solid #dedfe0;
+  background-color: #fff;
+  box-sizing: border-box;
+    margin-top: 20px;
+  transition: top 0.2s;
+}
+.main-cont__list .item:hover {
+  top: -3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}
+
+/* main-recommend */
+.main-recommend .list {
+  position: absolute;
+  top: 37px;
+  right: 10px;
+  font-size: 0;
+}
+.main-recommend .list em,
+.main-recommend .list a,
+.main-recommend .list span {
+  display: inline-block;
+  font-size: 12px;
+}
+.main-recommend .list em {
+  color: #666;
+  margin-right: 6px;
+}
+.main-recommend .list span {
+  padding: 0 12px;
+  color: #ddd;
+}
+.main-recommend .item {
+  position: relative;
+  height: 298px;
+    margin-top: 30px;
+}
+.main-recommend .info {
+  padding-left: 12px;
+}
+.main-recommend .info .title {
+  line-height: 48px;
+  font-weight: 700;
+}
+.main-recommend .info span {
+  color: #545b62;
+}
+.main-recommend .info span .pp{
+  color: #f33f5c;
+}
+.main-recommend .info span .bb{
+  color: #8c8c8c;
+}
+.main-recommend .info .purchase {
+  position: absolute;
+text-align: center;
+  right: 10px;
+  bottom: 10px;
+  width: 56px;
+  height: 25px;
+  line-height: 25px;
+  color: #fff;
+  background-color: #ffbb33;
+}
+.main-recommend .pic {
+  width: 222px;
+  height: 222px;
+}
+.main-recommend .img{
+  width: 222px;
+  height: 222px;
+}
+
+

@@ -1,0 +1,75 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}成功案例{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="main" >
+      <div class="main-inner body-width" style="margin-buttom: 30px;">
+       <a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a>
+      <div style="margin: 0px auto;text-align: center;width: 100%;" class= "main-cont__title1" >
+          <h3 style="font-size: 30px;font-weight: 700;">接&nbsp;单&nbsp;案&nbsp;例</h3>
+          <p class="list">
+      </div>
+          <div class="main-cont main-recommend" style="margin-buttom: 30px;">
+              {% if orders %}
+                  <ul class="main-cont__list clearfix">
+                      {% for order in orders %}
+                          <li class="item">
+                              <img src="/media/{{ order.task_send_id.task_img }}" alt="#" class="img">
+                              <div class="info"><br/><br/>
+                                  <p><font style="font-weight: 700">发单人：{{ order.task_send_id.sender.username }}</font></p><br/>
+                                  <font style="font-weight: 700">接单人：{{ order.task_taker_id.username }}</font>
+                                  <a href="#" class="icon-text__pink purchase" style="text-align: center">
+                                      {% if order.task_send_id.task_category == 'delivery' %}取快递
+                                      {% elif order.task_send_id.task_category == 'buy' %}代购
+                                      {% elif order.task_send_id.task_category == 'print'%}打印
+                                      {% elif order.task_send_id.task_category == 'umbrella'%}共享伞
+                                      {% else %}其他类
+                                      {% endif %}
+                                  </a>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <p><h6>当前还没有接单案例！</h6></p>
+              {% endif %}
+         <div class="page" style="width: 100%; margin: 0px auto;">
+             {% if data %}
+                 <ul id="pages" class="pagination pagination-sm pagination-xs">
+                     {% if data.first %}
+                         <li><a href="?page=1">1</a></li>
+                     {% endif %}
+                     {% if data.left %}
+                         {% if data.left_has_more %}
+                             <li><span>...</span></li>
+                         {% endif %}
+                         {% for i in data.left %}
+                             <li><a href="?page={{i}}">{{i}}</a></li>
+                         {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+                        {% if data.right %}
+                            {% for i in data.right %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                            {% endfor %}
+                            {% if data.right_has_more %}
+                                <li><span>...</span></li>
+                            {% endif %}
+                        {% endif %}
+                        {% if data.last %}
+                            <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+                        {% endif %}
+                    </ul>
+             {% endif %}
+         </div>
+    </div>
+  </div>
+{% endblock %}

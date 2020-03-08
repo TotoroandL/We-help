@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}接单说明 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+          <a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a>
+          <div style="margin: 0px auto;text-align: center;width: 100%;margin-bottom:30px;" class= "main-cont__title1" >
+              <h3 style="font-size: 30px;font-weight: 700;">接&nbsp;单&nbsp;说&nbsp;明&nbsp;</h3>
+              <p class="list">
+          </div>
+       </div>
+      <div id="container"style="width: 50%;margin: 40px auto;line-height: 30px;">
+          <div>
+              <p><h4 style="font-weight: 700;font-size: 20px">任务种类:</h4></p>
+              <p>本平台主打快递、代购、打印、共享伞等任务。</p>
+              <p><h4  style="font-weight: 700;font-size: 20px">任务支付说明:</h4></p>
+              <p>任务分为无偿及有偿两种。无偿任务即免费为他人服务；有偿服务即发单人将向接单人支付一定报酬的服务。</p>
+              <p>有偿任务的支付方式为平台外支付，即使用个人支付宝或微信等方式进行支付。</p>
+              <p><h4  style="font-weight: 700;font-size: 20px">安全说明:</h4></p>
+              <P>在执行任务的过程中，请务必注意人身安全！警方诈骗！</P>
+              <p>执行任务过程中发生的任何安全问题，本平台概不负责。</p>
+              <p><h4  style="font-weight: 700;font-size: 20px">如何接任务？</h4></p>
+              <p>在任务详情页点击“点击接单”按钮后，视为您已成功接单！</p>
+            </div>
+        </div>
+  </div>
+{% endblock %}

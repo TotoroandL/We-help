@@ -1,0 +1,28 @@
+{% extends 'boards/base.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+
+{% endblock %}
+
+{% block content %}
+
+{% if error_msg %}
+    <p>{{ error_msg }}</p>
+{% endif %}
+
+{% for topic in topic_list %}
+<div style="margin-bottom:50px;margin-top:50px">
+    <tr>
+        <td><a href="#">{{ topic.subject }}</a></td>
+        <td>发布者:{{ topic.starter.pk }}</td>
+    </tr>
+</div>
+{% empty %}
+  <div class="no-post"style="margin-bpttom:50px;margin-top:50px">
+    没有搜索到符合条件的文章
+  </div>
+
+{% endfor %}
+
+{% endblock %}

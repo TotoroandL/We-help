@@ -1,0 +1,62 @@
+{% extends 'boards/base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+  {{ board.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+<li class=" item"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+<li class="breadcrumb-item active"><font color="white">{{ board.name }}</font></li>
+<li class=" item"><a href="{% url 'top' board.pk %}"><font color="white">排行榜</font></a></li>
+
+{% endblock %}
+
+{% block content %}
+<div >
+  <div class="mb-4">
+    <a href="/boards/{{board.id}}/new/" class="btn btn-primary" style="background-color: #B766AD">新话题</a>
+  </div>
+
+  <table class="table mb-4" >
+    <thead class="thead-inverse">
+      <tr>
+        <th>主题</th>
+        <th>发起人</th>
+        <th>回复</th>
+        <th>浏览数</th>
+        <th>最近更新</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for topic in topics %}
+        {% url 'topic_posts' board.pk topic.pk as topic_url %}
+        <tr>
+          <td>
+            <p class="mb-0">
+              <a href="{{ topic_url }}">{{ topic.subject }}</a>
+            </p>
+            <small class="text-muted">
+              页:
+              {% for i in topic.get_page_range %}
+                <a href="{{ topic_url }}?page={{ i }}">{{ i }}</a>
+               {% endfor %}
+              {% if topic.has_many_pages %}
+              ... <a href="{{ topic_url }}?page={{ topic.get_page_count }}">Last Page</a>
+              {% endif %}
+            </small>
+          </td>
+          <td class="align-middle"><a href="/boards/{{topic.board.id}}/topics/{{topic.id}}/luntanuser/">{{ topic.starter.username }}</a></td>
+          <td class="align-middle">{{ topic.replies }}</td>
+          <td class="align-middle">{{ topic.views }}</td>
+          <td class="align-middle">{{ topic.last_updated|naturaltime }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div style="text-align:center">
+  {% include 'boards/includes/pagination.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'boards/base.html' %}
+
+{% load static %}
+
+{% block title %}回复{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{% static 'css/simplemde.min.css' %}">
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'js/simplemde.min.js' %}"></script>
+  <script>
+    var simplemde = new SimpleMDE();
+  </script>
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+<li class="breadcrumb-item"><a href="{% url 'board_topics' topic.board.pk %}"><font color="white">{{ topic.board.name }}</font></a></li>
+<li class="breadcrumb-item"><a href="{% url 'topic_posts' topic.board.pk topic.pk %}"><font color="white">{{ topic.subject }}</font></a></li>
+<li class="breadcrumb-item active"><font color="white">回复</font></li>
+{% endblock %}
+
+{% block content %}
+
+
+  {% for post in topic.posts.all %}
+    <div class="card mb-2">
+      <div class="card-body p-3">
+        <div class="row mb-3">
+          <div class="col-6">
+            <strong class="text-muted">{{ post.created_by.username }}</strong>
+          </div>
+          <div class="col-6 text-right">
+            <small class="text-muted">{{ post.created_at }}</small>
+          </div>
+        </div>
+        {{ post.message}}
+      </div>
+    </div>
+  {% endfor %}
+
+  <form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'boards/includes/form.html' %}
+    <div class="content">
+      <div class="form-row">
+        <label for="post_img">上传图片:</label>
+        <input id='post_img' name="post_img" type="file" placeholder="请上传图片">
+      </div>
+      <div class="form-row submit">
+        <button type="reset">重置</button>
+
+        <button type="submit" class="btn btn-success" style="float:right;background-color: #B766AD">提交</button>
+
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

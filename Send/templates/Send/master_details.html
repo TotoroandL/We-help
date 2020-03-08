@@ -1,0 +1,141 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}达人详情 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+    <script>
+
+</script>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div class="main-inner body-width">
+    <a href="{% url 'Send:popular_master' %}" class="cate"><<返回</a>
+      <div class="banner clearfix">
+        <div class="slider" id="slider">
+          <ul class="slider-wrapper">
+            <li class="item" data-title="(・●・)">
+              <img src="/media/{{ master.avatar }}" alt="#" size="cover" style="width:500px; height: 445px" >
+            </li>
+          </ul>
+        </div>
+         <div class="banner-info">
+          <div class="news body-border">
+            <ul>
+              <li class="rec">
+                  <p class="info">昵称：{{ master.mastername}}</p>
+                  <p class="info">ID号：{{master.id}}</p>
+                  <p class="info">类型：{{ master.master_type.master_type_name}}</p>
+                  <p class="info">接单次数：{{ master.task_take_num}}</p>
+                  <p class="info">评分：{{ master.final_remark}}</p>
+                  <p class="info">QQ号:{{ master.qq_num }}</p>
+                  <p class="info">成为达人时间：{{ master.become_master_datetime|date:"l d b Y"}}</p>
+                  <div class="bton">
+                      <button class="like" onclick="like_change(this,{{ master.id}})">
+                          {% if master_lik %}<span class="like_state" id="state">已赞</span>{% else %}<span class="like_state" id="state">点赞</span>{% endif %}
+                          <span class="alike" id="alike">{{ master.alike }}</span>
+                      </button>
+                      <button onclick="fav_change(this,{{ master.id }})" class="fav">{% if master_fav %}已关注{% else %}关注{% endif %}</button>
+                      {% if  user_id %}
+                          <a href="{% url 'Send:add_order_of_master' master.id %}" class="add">创建订单</a>
+                      {% else %}
+                          <button onclick="is_login()" class="add">创建订单</button>
+                      {% endif %}
+                  </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+    function like_change(obj, master_id) {
+        var is_like = document.getElementById("state").innerHTML == "点赞";
+        $.ajax({
+            url: "{% url 'Send:master_like' %}",
+            type: 'GET',
+            data: {
+                'master_id': master_id,
+                'is_like': is_like,
+            },
+            cache:false,
+            success: function (data) {
+                console.log(data);
+                if (data['status'] == 'SUCCESS'){
+                    alert(data['message']);
+                    document.getElementById("state").innerHTML = "已赞";
+                    document.getElementById("alike").textContent = data['alike'];
+                    if (is_like){
+                        window.alert(点赞成功);
+                    }
+                    else {
+                        document.getElementById("state").innerHTML = "点赞";
+                        document.getElementById("alike").textContent = data['alike'];
+                        console.log('取消成功');
+                    }
+                }
+                else {
+                    alert(data['message'])
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+         });
+        return false;
+    }
+    function fav_change(obj, master_id){
+        var is_fav = obj.innerHTML == "关注";
+        $.ajax({
+            type:'GET',
+            url: "{% url 'Send:master_favorite' %}",
+            data:{
+                'master_id':master_id,
+                'is_fav':is_fav
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                if (data['status'] == 'SUCCESS'){
+                    alert(data['message']);
+                    if (is_fav){
+                        obj.innerHTML="已关注";
+                    }
+                    else {
+                        obj.innerHTML="关注";
+                    }
+                }
+                else {
+                    alert(data['message'])
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+         });
+    }
+    function is_login(){
+        $.ajax({
+            type:'GET',
+            url: "{% url 'is_login' %}",
+            data:{
+            },
+            cache: false,
+            success: function (data) {
+                if (data['status'] == 'ERROR'){
+                    alert(data['message']);}
+                else {
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+
+        });
+    }
+</script>
+{% endblock %}

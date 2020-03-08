@@ -1,0 +1,130 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}任务细分 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/rec_gd.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+      <span class="aa"><a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a></span>
+          <div class="banner clearfix">
+              <div class="main-cont main-cate" style="width: 89%;margin: 0px auto" >
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background: url({% static 'images/dm22.png' %}) no-repeat right; background-size: cover;margin-right: 110px;margin-left: 100px">
+                          <div class="info" >
+                              <a href="{% url 'Take:task_take_division_hot' %}" class="info-title"><p><b>热&nbsp;门</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm23.png' %}) no-repeat scroll left; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division_all' %}" class="info-title"><p><b><u>所&nbsp;有</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="main-cont main-user">
+                  <ul class="main-cont__list clearfix" style="width: 85%;margin: 0px auto;">
+                      <li class="item" style=" background: url({% static 'images/cate01.png' %}) no-repeat; background-size: cover; text-align: center;">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division' 'delivery' %}" class="info-title"><p><b><u>快&nbsp;&nbsp;递</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate02.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division' 'buy' %}" class="info-title"><p><b><u>代&nbsp;&nbsp;购</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate03.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division' 'print' %}" class="info-title"><p><b><u>打&nbsp;&nbsp;印</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate04.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division' 'umbrella' %}" class="info-title"><p><b><u>共&nbsp;&nbsp;享&nbsp;&nbsp;伞</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate05.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_division' 'others' %}" class="info-title"><p><b><u>其&nbsp;&nbsp;它</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+          <div class="main-cont main-recommend"  style="width: 89%;margin: 0px auto;">
+              <div class="main-cont__title" style="margin: 0px auto;text-align: center;width: 100%;" >
+                  <h3 style="font-size: 30px;font-weight: 700;">
+                      {% if taskone %}
+                          {% if taskone.task_category == 'delivery' %}快&nbsp;递&nbsp;任&nbsp;务
+                          {% elif taskone.task_category == 'buy' %}代&nbsp;购&nbsp;任&nbsp;务
+                          {% elif taskone.task_category == 'print' %}打&nbsp;印&nbsp;任&nbsp;务
+                          {% elif taskone.task_category == 'umbrella'%}共&nbsp;享&nbsp;伞&nbsp;任&nbsp;务
+                          {% elif taskone.task_category == 'others'%}其&nbsp;他&nbsp;任&nbsp;务
+                          {% endif %}
+                      {% else %}
+                          <h6>还没有这一类别的任务！</h6>
+                      {% endif %}
+                  </h3>
+                  <p class="list">
+              </div>
+              <ul class="main-cont__list clearfix">
+                  {% if tasks %}
+                      {% for task in tasks %}
+                          <li class="item">
+                              <img src="/media/{{ task.task_img }}" alt="#" class="img">
+                              <div class="info">
+                                  <a href="{% url 'Take:task_take_division_details' task.task_id %}" class="title">
+                                     {% if task.task_category == 'delivery' %}取快递
+                                     {% elif task.task_category == 'buy' %}代购
+                                     {% elif task.task_category == 'print'%}打印
+                                     {% elif task.task_category == 'umbrella'%}共享伞
+                                     {% else %}其他
+                                     {% endif %}
+                                  </a>
+                                  <span><span class="pp">❤</span> {{ task.send_collection_times}}&nbsp;&nbsp;&nbsp;</span>
+                                  <span><span class="bb" >¥</span>&nbsp;{{ task.task_reward }}</span>
+                                  <a href="{% url 'Take:task_take_division_details' task.task_id %}" class="icon-text__pink purchase">详情</a>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  {% endif %}
+              </ul>
+              <div class="page"  style="width: 20%; margin: 0px auto;">
+                  {% if data %}
+                      <ul id="pages" class="pagination pagination-sm pagination-xs">
+                          {% if data.first %}
+                              <li><a href="?page=1">1</a></li>
+                          {% endif %}
+                          {% if data.left %}
+                              {% if data.left_has_more %}
+                                  <li><span>...</span></li>
+                              {% endif %}
+                              {% for i in data.left %}
+                                  <li><a href="?page={{i}}">{{i}}</a></li>
+                              {% endfor %}
+                          {% endif %}
+                          <li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+                                {% if data.right %}
+                                    {% for i in data.right %}
+                                        <li><a href="?page={{i}}">{{i}}</a></li>
+                                    {% endfor %}
+                                    {% if data.right_has_more %}
+                                        <li><span>...</span></li>
+                                    {% endif %}
+                                {% endif %}
+                          {% if data.last %}
+                              <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+                          {% endif %}
+                    </ul>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

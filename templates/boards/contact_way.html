@@ -1,0 +1,129 @@
+{% extends 'boards/base.html' %}
+{% block title %}
+联系方式
+{% endblock %}
+
+{% load static %}
+
+{% block breadcrumb %}
+
+{% endblock %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系方式</title>
+<style type="text/css">
+        .container{
+            width: 100%;
+            margin: 20px auto;
+        }
+        .content{
+            width:50%;
+            border:1px #00aced;
+            margin: 0px auto;
+        }
+        .title{
+            margin-bottom:15px;
+            margin-top:15px;
+            font-size: 2.0em;
+            color: #3b1b55;
+            font-family: 微软雅黑;
+            font-weight: 700;
+        }
+        .line{
+            margin-bottom:30px;
+            width: 100%;
+            height:1px;
+            background-color: rgba(204, 204, 204, 0.4);
+        }
+        .chengyuan {
+            border: 1px solid #3b1b55;
+            height: 180px;
+            width:100%;
+            margin-bottom: 15px;
+        }
+        .touxiang{
+            width: 30%;
+            height: 180px;
+            float: left;
+            padding: 5px;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        .touxiang img{
+            width: 90%;
+            height: 90%;
+            margin-left: 15px;
+        }
+        .wenzi{
+            width: 60%;
+            margin-left: 5px;
+            float: right;
+            padding: 10px;
+        }
+        .mingzi{
+            font-size: 22px;
+            margin-bottom: 5px;
+            margin-top: 12px;
+            color: #210f2f;
+        }
+        .xuexiao{
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .zuoyouming{
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 25px;
+        }
+</style>
+</head>
+<div class="container">
+    <div class="content">
+        <div class="title" style="text-align:center">联系方式</div>
+        <div class="line"></div>
+        <div class="article">
+            <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/shouye/1.png' %}">
+                </div>
+                <div class="wenzi">
+				<div class="mingzi">电话</div>
+                    <div class="xuexiao">189XXXXXXXX</div>
+                    <div class="zuoyouming">
+                          我们随时欢迎您致电！</div>
+                </div>
+            </div>
+             <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/shouye/2.png' %}" alt="">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">E-mail</div>
+                    <div class="xuexiao"> 164XXXXXXXQQ.com</div>
+                    <div class="zuoyouming">
+                         我们会尽快给您答复！
+                    </div>
+                </div>
+            </div>
+             <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/shouye/3.png' %}" alt="">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">微博</div>
+                    <div class="xuexiao"> @6666</div>
+                    <div class="zuoyouming">
+                         您也可以关注我们的微博，上面有很多我们分享的故事
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

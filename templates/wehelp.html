@@ -1,0 +1,413 @@
+{% load static %}<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"/>
+<meta name="format-detection" content="telephone=no" />
+<title>Wehelp</title>
+    {# 这里的不能删掉#}
+    <link href="{% static 'css/index01.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base01.css' %}" rel="stylesheet">
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery-1.8.3.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/slick.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/comm.js' %}" type="text/javascript"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    {# 这里的不能删掉#}
+</head>
+<body>
+<div class="header" id="header">
+    <div class="topline"></div>
+    <div class="masklayer"></div>
+    <div class="smenu" id="smenu"><i class="icon-menu"></i></div>
+    <div class="navwrapper">
+        <div class="logowrapper">
+            <a href="wehelp.html" class="logo"><img src="{% static 'images/logo02.png' %}" alt=""></a>
+            <!--    <a href="http://www.tsinghua.edu.cn/publish/thu2018/107.html"><img src="/publish/thu2018/images/107.jpg" alt=""></a> -->
+        </div>
+        <div class="nav">
+            <div class="mainnav clearfix">
+                <ul id="nav">
+                    <li><a href="" target="_blank"></a></li>
+                    <li><a href="/Send/send_category.html/" class="">发布任务</a></li>
+                    <li><a href="/Take/task_take/">接受任务</a></li>
+                    <li><a href="/Communication/system_message/">消息中心</a></li>
+                    <li><a href="/luntan/">论&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;坛</a></li>
+                    {% if user.is_login %}
+                    <li><a href="#" class="">&nbsp;{{ user.username }}</a>
+                        <ul class="last">
+                            <li><a href="/index/">个人中心</a></li>
+                            <li><a href="/logout/">注销</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="#" class="">未登录</a>
+                        <ul class="last">
+                            <li><a href="/login/">登录</a></li>
+                            <li><a href="/register/">注册</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="subnav clearfix">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="topimg">
+        <ul>
+            <li style="background-image: url(../static/images/air03.png)">
+                <a href="https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6%E5%9B%BE%E7%89%87&step_word=&hs=2&pn=3&spn=0&di=201004429231&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=170030989%2C871912478&os=1023930286%2C1880188183&simid=3497177220%2C368804322&adpicid=0&lpn=0&ln=1849&fr=&fmq=1545571805078_R&fm=&ic=undefined&s=undefined&hd=1&latest=0&copyright=0&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170507%2F16460feef7764e1ba816b7429d908a88_th.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fojg_z%26e3Bj5s_z%26e3BvgAzdH3Fjxrj6pAzdH3Fw6ptvsjAzdH3Fda80acAzdH3F8dda_z%26e3Bip4s&gsm=b4&rpstart=0&rpnum=0&islist=&querylist=" target="_blank" ><h3></h3></a>
+            </li>
+            <li style="background-image: url(../static/images/air01.png)">
+                <a href="
+                https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87&step_word=&hs=2&pn=42&spn=0&di=18743829390&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=2&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=-1&cs=942382881%2C119822053&os=2689625402%2C1420239914&simid=3203059959%2C3933874519&adpicid=0&lpn=0&ln=438&fr=&fmq=1545572438701_R&fm=result&ic=&s=undefined&hd=1&latest=0&copyright=0&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fcc1.cache.cdqss.com%2Fphotochengdu%2Fattachment%2Fforum%2F201211%2F30%2F17534562picoixppoapz44.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fri5p5_z%26e3Bvijg217_z%26e3BvgAzdH3FkkfAzdH3Fu5674_z%26e3Brir%3F451%3D6j1t6jvp%26pt1%3Ddabdmn%2625p5%3Dswfpr5fp&gsm=0&rpstart=0&rpnum=0&islist=&querylist=        "target="_blank" ><h3></h3></a>
+            <li style="background-image: url(../static/images/air02.png)">
+                <a href="http://www.win4000.com/meinv112600_2.html"><h3></h3></a>
+        </li>
+
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+ $('.topimg ul').slick({
+   infinite: true,
+   slidesToShow: 1,
+   slidesToScroll: 1,
+   autoplay: true,
+   centerMode: false,
+   arrows:true,
+   fade:true,
+   dots:true,
+   autoplaySpeed:4000,
+   prevArrow:"<div class='pre arrow'><i class='icon-angle-left'></i></div>",
+   nextArrow:"<div class='next arrow'><i class='icon-angle-right'></i></div>",
+   customPaging:function(slider, i) {
+    return '<button>0' + (i + 1) +"</button>";
+   },
+  responsive: [{
+       breakpoint: 1000,
+       settings: {
+          fade:false,
+      speed:800
+         }
+     }]
+   });
+</script>
+<div class="content">
+ <div class="section_1">
+  <div class="cbg"></div>
+  <div class="mainWrap">
+   <div class="news clearfix">
+    <ul>
+        <li  class="fi" ><a href="/Send/send_category.html/" target="_blank"><img src="{% static 'images/cd01.png' %}" alt=""><div class="txtwrapper"><p>发布任务</p></div></a></li>
+        <li class="xi"><a href="/Take/task_take/" target="_blank"><img src="{% static 'images/cd03.jpg' %}" alt=""><div class="txtwrapper"><p>接受任务</p></div></a></li>
+    </ul>
+   </div>
+   <div class="events">
+    <h2><b></b>学校通知<b></b></h2>
+    <ul class="clearfix">
+         <li><a href="http://jwc.scu.edu.cn/detail/114/6670.htm" target="_blank">
+      <div class="time">
+          <span>12</span>2018.12
+      </div>
+      <div class="txtwrapper">
+       <h3>关于2018-2019-2学期课程选课安排的通知</h3>
+
+      </div>
+     </a></li>
+         <li><a href="http://jwc.scu.edu.cn/detail/110/6672.htm" target="_blank">
+      <div class="time">
+       <span>12</span>2018.12
+      </div>
+      <div class="txtwrapper">
+       <h3>关于选派本科生参加2019年秋美国圣母大学交流项目的通知</h3>
+
+      </div>
+     </a></li>
+         <li><a href="http://jwc.scu.edu.cn/detail/116/6631.htm" target="_blank">
+      <div class="time">
+       <span>12</span>2018.12
+      </div>
+      <div class="txtwrapper">
+       <h3>关于2018-2019学年（秋）期末考试学生个人考表查询及缓补考申办的通知</h3>
+      </div>
+     </a></li>
+        </ul>
+   </div>
+    <a href="http://www.scu.edu.cn/xwzx.htm" target="_blank" class="newsmore">更多通知</a>
+<!-- <a href="http://www.tsinghua.edu.cn/publish/thu2018/openday.html" class="advpic" target="_blank"><img src="/publish/thu2018/images/open.jpg" alt=""></a>
+ <a href="http://www.tsinghua.edu.cn/publish/thu2018/2018admission.html" class="advpic" target="_blank"><img src="/publish/thu2018/images/admission2018/2018admission.jpg" alt=""></a>
+  <a href="http://www.tsinghua.edu.cn/publish/thu2018/2018admission.html" class="anniv107pic"><img src="/publish/thu2018/images/admission2018/2018admission.jpg" alt=""></a> -->
+  </div>
+ </div>
+ <div class="section_2">
+  <div class="mainWrap relative">
+   <h2><span>团队风采</span><a href="/about_us/" class="more">更多 ></a></h2>
+   <div class="focus">
+    <div class="bigpic">
+    <ul>
+          <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe01.png' %}" alt=""><div class="txtwrapper"><div class="cata">龚艺</div><h3>(・ o ・)</h3><p> 每个人都是赤手空拳来到这个世界，有的人成功，有的人失败，都有各自的原因。条件不会摆在每个人前面，学会没有条件的时候自己创造条件。</p></div></a>
+     </li>
+          <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe02.png' %}" alt=""><div class="txtwrapper"><div class="cata">张婉竹</div><h3>(๑• . •๑)</h3><p> 金矿的山上还有其他花朵，除了具备发现的眼睛外，还需要有着肯流汗的心。成功的金子常常就埋在身旁的泥土里，勤奋是最好的点金指。 </p></div></a>
+     </li>
+          <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe03.png' %}" alt=""><div class="txtwrapper"><div class="cata">罗斯琪</div><h3>(｡•ˇ‸ˇ•｡)</h3><p>  面对人生的逆境，最难的事也是坚持，好好挺着。不断进取，勇敢面对一切困难，努力克服它，战胜它，这是生存的法则。</p></div></a>
+     </li>
+                  <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe04.png' %}" alt=""><div class="txtwrapper"><div class="cata">罗引</div><h3>( •̥́ ˍ •̀ू )</h3><p> 正确的时间做正确的事。海到尽头天作岸，山登绝顶我为峰。所有的成功都来自行动，只有付诸于行动，才能一步步走向成功。 </p></div></a>
+     </li>
+                  <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe05.png' %}" alt=""><div class="txtwrapper"><div class="cata">杜雷</div><h3>(●—●)</h3><p> 成功就是在不断地克服困难，在困难中创造自己的价值。有心人会在困难中找出路，而无心的人只会在众多的机会中找借口。 </p></div></a>
+     </li>
+
+     </ul>
+    </div>
+    <div class="smallpic">
+     <ul>
+                         <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe02.png' %}" alt="" style="border:#da9af3 1px solid"><div class="txtwrapper" style="background-color: rgba(114,28,36,0)"><div class="cata">张婉竹</div></div></a>
+     </li>
+                                             <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe03.png' %}" alt="" style="border:#da9af3 1px solid"><div class="txtwrapper" style="background-color: rgba(114,28,36,0)"><div class="cata" >罗斯琪</div></div></a>
+     </li>
+
+     <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe04.png' %}" alt="" style="border:#da9af3 1px solid"><div class="txtwrapper" style="background-color: rgba(114,28,36,0)"><div class="cata">罗引</div></div></a>
+     </li>
+
+             <li>
+     <a href="" target="_blank" ><img src="{% static 'images/pe05.png' %}" alt="" style="border:#da9af3 1px solid"><div class="txtwrapper" style="background-color: rgba(114,28,36,0)"><div class="cata">杜雷</div></div></a>
+     </li>
+
+             <li>
+     <a href="" target="_blank"><img src="{% static 'images/pe01.png' %}" alt="" style="border:#da9af3 1px solid"><div class="txtwrapper" style="background-color: rgba(114,28,36,0)"><div class="cata">龚艺</div></div></a>
+     </li>
+
+
+          </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+ <script type="text/javascript">
+  $('.smallpic ul').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    centerMode: false,
+    arrows:false,
+    dots:false,
+    asNavFor:$('.bigpic ul')
+    });
+  $('.bigpic ul').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    centerMode: false,
+    arrows:false,
+    dots:true,
+    autoplaySpeed:4000,
+    prevArrow:"<div class='pre arrow'><i class='icon-angle-left'></i></div>",
+    nextArrow:"<div class='next arrow'><i class='icon-angle-right'></i></div>",
+    asNavFor:$('.smallpic ul')
+    });
+</script>
+ <div class="section_3">
+  <div class="tbg"><div><img src="{% static 'images/pgy02.png' %}" alt=""></div></div>
+  <div class="tcbg"></div>
+  <div class="mainWrap relative">
+ <h2><b></b>平台数据<b></b></h2>
+  <div class="datawrapper">
+    <div class="dataitem">
+     <ul>
+      <li>
+       <div class="wrapper">
+       <img src="/publish/thu2018/images/1.1.png" alt="">
+       <div class="txtwrapper">
+        <h4>45038</h4>
+        <p>平台拥有45038达人为你服务</p>
+        </div>
+       </div>
+      </li>
+      <li><div class="wrapper"><img src="/publish/thu2018/images/1.2.png" alt="">
+      <div class="txtwrapper">
+       <h4>98.8%</h4>
+       <p>用户满意度高达98.8%</p>
+       </div>
+       </div>
+      </li>
+
+     </ul>
+    </div>
+    <div class="dataitem">
+     <ul>
+      <li>
+       <div class="wrapper">
+       <img src="/publish/thu2018/images/1.3.png" alt="">
+       <div class="txtwrapper">
+        <h4>235480</h4>
+        <p>全平台已实现交易量235480次</p>
+        </div>
+       </div>
+      </li>
+      <li><div class="wrapper"><img src="/publish/thu2018/images/1.4.png" alt="">
+      <div class="txtwrapper">
+       <h4>5,000,000</h4>
+       <p>平台总用户达到5，000，000以上</p>
+       </div>
+       </div>
+      </li>
+
+     </ul>
+    </div>
+    <div class="dataitem">
+     <ul>
+   <li>
+       <div class="wrapper">
+       <img src="/publish/thu2018/images/2.2.png" alt="">
+       <div class="txtwrapper">
+        <h4>37</h4>
+        <p>合作企业37个</p>
+        </div>
+       </div>
+      </li>
+
+      <li><div class="wrapper"><img src="/publish/thu2018/images/2.1.png" alt="">
+      <div class="txtwrapper">
+       <h4>51</h4>
+       <p>平台管理人员51人</p>
+       </div>
+       </div>
+      </li>
+
+     </ul>
+    </div>
+
+
+    </div>
+   </div>
+ </div>
+ <script type="text/javascript">
+   $('.datawrapper').slick({
+     infinite: true,
+     slidesToShow: 4,
+     slidesToScroll: 4,
+     autoplay: true,
+     centerMode: false,
+     arrows:false,
+     dots:true,
+     autoplaySpeed:8000,
+     responsive: [{
+         breakpoint: 1400,
+         settings: {
+            slidesToShow: 3,
+        slidesToScroll: 3
+           }
+       },
+         {
+         breakpoint: 1000,
+         settings: {
+            slidesToShow: 2,
+        slidesToScroll: 2
+           }
+       } ,
+         {
+         breakpoint: 600,
+         settings: {
+            slidesToShow: 1,
+        slidesToScroll: 1
+           }
+       }
+    ]
+     })
+</script>
+</div>
+
+<div class="footer" style="border-top:1px #e3d2fd solid;">
+ <div class="mainWrap">
+  <div class="ulink clearfix">
+   <div class="tlink">
+    <div class="txtwrapper clearfix">
+     <h2>常用链接</h2>
+     <ul>
+      <li><a href="http://jwc.scu.edu.cn/" target="_blank">四川大学教务处</a></li>
+      <li><a href="http://www.scu.edu.cn/" target="_blank">四川大学</a></li>
+      <li><a href="http://zhjw.scu.edu.cn/login" target="_blank">本科生登录</a></li>
+         <li><a href="http://ggglxy.scu.edu.cn/" target="_blank">川大公共管理学院</a></li>
+     </ul>
+    </div>
+   </div>
+      <div class="tlink">
+          <div class="txtwrapper clearfix">
+              <h2>商务合作</h2>
+              <ul>
+                  <li><a href="/cooperation/">合作方式</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="tlink">
+          <div class="txtwrapper clearfix">
+              <h2>联系我们</h2>
+              <ul>
+                  <li><a href="/contact_way/">联系方式</a></li>
+                  <li><a href="/contact_us/">联系我们</a></li>
+                  <li><a href="/joinus/">加入我们</a></li>
+              </ul>
+          </div>
+      </div>
+     <div class="tlink">
+          <div class="txtwrapper clearfix">
+              <h2>关于我们</h2><ul>
+      <li><a href="/about_us/" target="_blank">团队简介</a></li>
+      <li><a href="/about_platform/">平台简介</a></li>
+      <li><a href="/disclamier/" target="_blank">免责声明</a></li>
+              <li><a href="/bar/" target="_blank">平台数据</a></li>
+     </ul>
+        </div>
+    </div>
+  </div>
+  </div>
+  <div class="copy">
+   <div class="mainWrap">
+    <div class="contact">
+     <img src="{% static 'images/logo04.png' %}" alt="">
+     <div class="txtwrapper">
+      <i class="icon-phone"></i> 18388888888　<span><i class="icon-mail"></i> 123456789@qq.com</span><br>
+ <i class="icon-location"></i> 四川大学公共管理学院信息管理与信息系统Wehlep组
+     </div>
+    </div>
+ <script language="javascript" type="text/javascript">
+ //<![CDATA[
+ $(document).ready(function(){
+   getResData();
+   //获取数据
+   function getResData(){
+  jQuery.getJSON("/application/visits/visits.jsp?sid=thu2018&r="+Math.random(), function(data){
+    $("#today").empty();
+    $("#today").append(data[0].today);
+    $("#total").empty();
+    $("#total").append(data[0].total);
+    $("#arverage").empty();
+    $("#arverage").append(data[0].arverage);
+  });
+   };
+ });
+ //]]>
+ </script>
+    <div class="copyrights">
+     版权所有 © WeHelp<span></span><i class="icon-chart-bar"></i> <span id="total" style="padding:0;opacity:1;"></span>
+    </div>
+   </div>
+  </div>
+
+</div></body>
+</html>

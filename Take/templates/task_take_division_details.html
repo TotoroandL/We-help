@@ -1,0 +1,110 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}任务详情 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+
+{% endblock %}
+de
+{% block content %}
+  <div class="main" style="margin-bottom: 30px;">
+      <div class="main-inner body-width" style="margin-bottom: 30px;">
+          <a style="font-size: 16px;" href="{% url 'Take:task_take_division_all' %}" class="cate"><<返回普通接单首页</a>
+              {% if task %}
+                  <div class="banner clearfix" style="margin-top: 30px;"><div class="slider" id="slider">
+                      <ul class="slider-wrapper">
+                            <li class="item" data-title="(・●・)">
+                                <img src="/media/{{task.task_img}}" alt="#" size="cover" style="width:500px; height: 445px" >
+                            </li>
+                      </ul>
+                  </div>
+          <div class="banner-info"   style="margin-bottom: 30px;">
+          <div class="news body-border"  style="margin-bottom: 30px;" >
+              <ul>
+                  <li class="rec">
+                      <div class="neirong">
+                        <div class="neirong-left"><a href="{% url 'Take:task_sender_details' task.sender.pk task.task_id %}">发单人：{{ task.sender.username }}</a></div>
+                      </div>
+                      <div class="neirong">
+                          <div class="neirong-left">联系QQ：{{ task.sender.qq_num }}</div>
+                          <div class="neirong-right">任务类别：
+                              {% if task.task_category == 'delivery' %}取快递
+                              {% elif task.task_category == 'buy' %}代购
+                              {% elif task.task_category == 'print'%}打印
+                              {% elif task.task_category == 'umbrella'%}共享伞
+                              {% else %}其他
+                              {% endif %}
+                          </div>
+                      </div>
+                      <div class="neirong">
+                          <div class="neirong-left">任务报酬：{{ task.task_reward }}</div>
+                          <div class="neirong-right">任务时间：{{ task.task_reward }}</div>
+                      </div>
+                      <div class="neirong">
+                          <div class="neirong-left">任务地点：{{ task.task_reward }}</div>
+                          <div class="neirong-right">收藏数：{{ task.send_collection_times }}</div>
+                      </div>
+                      <div class="neirong">
+                          <div class="neirong-left1">发布时间：{{ task.task_send_time}}</div>
+                      </div>
+                      <div class="neirong1" >
+                          <div class="neirong-left2" id="neirong_left1">任务详情：{{ task.task_details }}</div>
+                      </div>
+
+                      <div class="bton1" style="padding-bottom: 0px;">
+                          <div style="width: 40%;float: left"><button onclick="collection_change(this,{{task.task_id }})" class="fav2">{% if collection %}已收藏{% else %}未收藏{% endif %}</button></div>
+                          <div id="addtask" class="addtask" style="margin-bottom: 0px;margin-left: 5px;"> <a onMouseOver="this.style.color='#f9f9fa' " href="{% url 'Take:task_take_success' task.task_id %}" >点击接单</a> </div>
+                      </div>
+                  {% if message %}
+                      <div>{{ message }}</div>
+                  {% endif %}
+                   </li>
+               </ul>
+          </div></div>
+      </div>
+              {% else %}
+                  <p>当前没有详细信息！</p>
+              {% endif %}
+    </div>
+  </div>
+<script>
+    function collection_change(obj,task_id){
+          var is_collection=obj.innerHTML == "未收藏"
+          var not_collection=obj.innerHTML == "已收藏"
+        $.ajax({
+            type:'GET',
+            url:"/Take/task_take_collection/",
+            data:{
+                'task_id':task_id,
+                'is_collection':is_collection,
+            },
+            cache:false,
+            success:function(data){
+                console.log(data);
+                if(data['collection_state']=='ok'){
+                    alert(data['message'])
+                    if(is_collection){
+                    obj.innerHTML="已收藏";
+                    }
+                    else{
+                    obj.innerHTML="未收藏"
+                    }
+                }
+                else if(data['collection_state']=='ok-fail'){
+                    alert(data['message'])
+                    if (not_collection){
+                    obj.innerHTML="未收藏";
+                    }
+                    else{
+                    obj.innerHTML="已收藏"
+                    }
+                }
+            },
+             error: function(xhr){
+                    console.log(xhr)
+              }
+        });
+     }
+</script>
+{% endblock %}

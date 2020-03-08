@@ -1,0 +1,81 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/choice.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="nav1">
+  <div class="item home">
+      <img src="{% static 'images/icon/icon01.jpg' %}" class="nav-img">
+    <a href="/index/">个人资料</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon02.png' %}" class="nav-img">
+    <a href="/reset_pw/">修改密码</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon03.jpg' %}" class="nav-img">
+    <a href="/send/">已发订单</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon04.png' %}" class="nav-img">
+    <a href="/task/">已接订单</a>
+  </div>
+        <div class="item">
+            <img src="{% static 'images/icon/icon05.jpg' %}" class="nav-img">
+      <a href="/collection/">我收藏的订单</a>
+  </div>
+       <div class="item">
+           <img src="{% static 'images/icon/icon06.jpg' %}" class="nav-img">
+      <a href="/goodfavorite/">我收藏的商品</a>
+  </div>
+     <div class="item">
+         <img src="{% static 'images/icon/icon07.jpg' %}" class="nav-img">
+      <a href="/collection_c/">我收藏的大赛</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon08.png' %}" class="nav-img">
+    <a href="/tags/">达人认证</a>
+  </div>
+
+  <div class="item">
+      <img src="{% static 'images/icon/icon09.png' %}" class="nav-img">
+    <a href="/logout/">注销登录</a>
+  </div>
+</div>
+{% if type %}
+    <div class="content">
+        <div class="res">
+            <img src="{% static 'images/icon/icon10.png' %}" style="margin-left: 80px;margin-top: 100px;height: 200px;width: 200px">
+            <span>已添加！</span>
+        </div>
+    </div>
+{% else %}
+    <div class="content">
+        <form  action="/tags/new/" method="POST">
+      请选择您最倾向的任务类型<br/>
+      <input type="radio" name="master_type_id" value="1" checked="checked"> 快递
+      <input type="radio" name="master_type_id" value="2"> 代购
+      <input type="radio" name="master_type_id" value="3"> 打印
+      <input type="radio" name="master_type_id" value="4"> 共享伞
+      <input type="radio" name="master_type_id" value="5"> 其他
+      <div class="row btn">
+          <button type="submit">提交</button>
+      </div>
+        </form>
+    </div>
+{% endif %}
+
+<script>
+$(function() {
+  if ((location.pathname.split("/")[1]) !== ""){
+    $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').parent(".item").addClass('active');
+  } else {
+    $('.home').addClass('active');
+  }
+});
+</script>
+{% endblock %}

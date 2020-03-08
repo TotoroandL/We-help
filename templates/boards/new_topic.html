@@ -1,0 +1,35 @@
+{% extends 'boards/base.html' %}
+
+{% block title %}Start a New Topic{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+<li class="breadcrumb-item"><a href="{% url 'board_topics' board.pk %}"><font color="white">{{ board.name }}</font></a></li>
+<li class="breadcrumb-item active"><font color="white">新话题</font></li>
+{% endblock %}
+
+{% block content %}
+<form   method="POST" enctype="multipart/form-data">
+  {% include 'boards/includes/form.html' %}
+<div class="content">
+      <div class="form-row" >
+            <!--img src="/media/{{ user.avatar }}" class="avatar" -->
+            <div class="info"><b>昵称：{{ user.username}}</b></div>
+      </div>
+      <div class="form-row">
+        <label for="img">上传图片:</label>
+        <input id='img' name="img" type="file" placeholder="请上传图片">
+      </div>
+      <div class="form-row submit">
+        <button type="reset">重置</button>
+
+        <button type="submit" class="btn btn-success" style="margin-bottom:40px;margin-right:40px;float:right; background-color: #B766AD">提交</button>
+
+      </div>
+</div>
+</form>
+  <!--form method="post" novalidate>
+    {% csrf_token %}    {% include 'boards/includes/form.html' %}
+    <button type="submit" class="btn btn-success" style="float:right">提交</button>
+  </form-->
+{% endblock %}

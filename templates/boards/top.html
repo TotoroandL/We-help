@@ -1,0 +1,38 @@
+{% extends 'boards/base.html' %}
+
+{% block title %} hottopics {% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active"><a href="{% url 'luntan' %}"><font color="white">总板块</font></a></li>
+<li class="breadcrumb-item active"><a href="{% url 'board_topics' board.pk %}"><font color="white">{{ board.name }}</font></a></li>
+{% endblock %}
+
+{% block content %}
+<div style="text-align:center;font-size:45px" ><font color="#3b1b55">热帖排行榜</font></div>
+
+<div>
+<table class="table mb-4" >
+    <thead class="thead-inverse">
+      <tr>
+        <th>主题</th>
+        <th>发起人</th>
+        <th>浏览数</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for topic in topics %}
+  {% url 'topic_posts' board.pk topic.pk as topic_url %}
+        <tr>
+          <td>
+            <p class="mb-0">
+              <a href="{{ topic_url }}">{{ topic.subject }}</a>
+            </p>
+          </td>
+          <td class="align-middle"><a href="/boards/{{topic.board.id}}/topics/{{topic.id}}/luntanuser/">{{ topic.starter.username }}</a></td>
+          <td class="align-middle">{{ topic.views }}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

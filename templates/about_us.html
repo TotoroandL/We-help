@@ -1,0 +1,136 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}团队介绍{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+    <style type="text/css">
+        .container{
+            width: 100%;
+            height:1100px;
+            margin: 20px auto;
+        }
+        .content{
+            width:50%;
+            border:1px #00aced;
+            margin: 0px auto;
+        }
+        .title{
+            margin:15px auto;
+            font-size: 2.0em;
+            color: #3b1b55;
+            font-family: 微软雅黑;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
+        }
+        .line{
+            margin-bottom:30px;
+            width: 100%;
+            height:1px;
+            background-color: rgba(204, 204, 204, 0.4);
+        }
+        .chengyuan {
+            border: 1px solid #3b1b55;
+            height: 180px;
+            width:100%;
+            margin-bottom: 15px;
+        }
+        .touxiang{
+            width: 30%;
+            height: 180px;
+            float: left;
+            padding: 5px;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        .touxiang img{
+            width: 90%;
+            height: 90%;
+            margin-left: 15px;
+        }
+        .wenzi{
+            width: 60%;
+            margin-left: 5px;
+            float: right;
+            padding: 10px;
+        }
+        .mingzi{
+            font-size: 22px;
+            margin-bottom: 5px;
+            margin-top: 12px;
+            color: #210f2f;
+        }
+        .xuexiao{
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .zuoyouming{
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 25px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="content">
+        <div class="title">团队成员</div>
+        <div class="line"></div>
+        <div class="article">
+            <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/Login/du.jpg' %}">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">杜雷</div>
+                    <div class="xuexiao">川大公管2016级信管专业</div>
+                    <div class="zuoyouming">
+                        座右铭： 成功就是在不断地克服困难，在困难中创造自己的价值。有心人会在困难中找出路，而无心的人只会在众多的机会中找借口。</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/Login/gong.jpg' %}" alt="">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">龚艺</div>
+                    <div class="xuexiao">川大公管2016级信管专业</div>
+                    <div class="zuoyouming">
+                        座右铭： 每个人都是赤手空拳来到这个世界，有的人成功，有的人失败，都有各自的原因。条件不会摆在每个人前面，学会没有条件的时候自己创造条件。
+                    </div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/Login/luo.jpg' %}" alt=""></a></div>
+                <div class="wenzi">
+                    <div class="mingzi">罗斯琪</div>
+                    <div class="xuexiao">川大公管2016级信管专业</div>
+                    <div class="zuoyouming">
+                        座右铭： 面对人生的逆境，最难的事也是坚持，好好挺着。不断进取，勇敢面对一切困难，努力克服它，战胜它，这是生存的法则。</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/Login/luoyin.jpg' %}" alt=""></div>
+                <div class="wenzi">
+                    <div class="mingzi">罗引</div>
+                    <div class="xuexiao">川大公管2016级信管专业</div>
+                    <div class="zuoyouming">
+                        座右铭：正确的时间做正确的事。海到尽头天作岸，山登绝顶我为峰。所有的成功都来自行动，只有付诸于行动，才能一步步走向成功。</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/Login/zhang.jpg' %}" alt=""></div>
+                <div class="wenzi">
+                    <div class="mingzi">张婉竹</div>
+                    <div class="xuexiao">川大公管2016级信管专业</div>
+                    <div class="zuoyouming">
+                        座右铭： 金矿的山上还有其他花朵，除了具备发现的眼睛外，还需要有着肯流汗的心。成功的金子常常就埋在身旁的泥土里，勤奋是最好的点金指。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

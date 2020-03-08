@@ -1,0 +1,145 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/sd.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+<div class="nav1">
+  <div class="item home">
+      <img src="{% static 'images/icon/icon01.jpg' %}" class="nav-img">
+    <a href="/index/">个人资料</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon02.png' %}" class="nav-img">
+    <a href="/reset_pw/">修改密码</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon03.jpg' %}" class="nav-img">
+    <a href="/send/">已发订单</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon04.png' %}" class="nav-img">
+    <a href="/task/">已接订单</a>
+  </div>
+        <div class="item">
+            <img src="{% static 'images/icon/icon05.jpg' %}" class="nav-img">
+      <a href="/collection/">我收藏的订单</a>
+  </div>
+       <div class="item">
+           <img src="{% static 'images/icon/icon06.jpg' %}" class="nav-img">
+      <a href="/goodfavorite/">我收藏的商品</a>
+  </div>
+     <div class="item">
+         <img src="{% static 'images/icon/icon07.jpg' %}" class="nav-img">
+      <a href="/collection_c/">我收藏的大赛</a>
+  </div>
+  <div class="item">
+      <img src="{% static 'images/icon/icon08.png' %}" class="nav-img">
+    <a href="/tags/">达人认证</a>
+  </div>
+
+  <div class="item">
+      <img src="{% static 'images/icon/icon09.png' %}" class="nav-img">
+    <a href="/logout/">注销登录</a>
+  </div>
+</div>
+<div class="content">
+      <div class="main-cont main-user">
+      {% if tasks %}
+              <ul class="main-cont__list clearfix">
+                  {% for task in tasks %}
+                      <li class="item">
+                          <a href="{% url 'Send:send_details' user.id %}" ><img src="/media/{{ task.task_send_id.task_img }}" style="height: 112px;width: 100%;" ></a>
+                          <a href="{% url 'Send:send_details' user.id %}" class="headImg"><img src="/media/{{ task.task_send_id.task_img }}" alt="#"></a>
+                          <div class="info">
+                              <a href="{% url 'Send:send_details' user.id %}" class="info-title"></a>
+                              <p>订单ID： <b>{{ task.task_take_id}}</b></p>
+                          </div>
+                      </li>
+                  {% endfor %}
+              </ul>
+      {% else %}
+          <div class="res">
+          <span>您还没有接过任何订单哦 </span>
+          </div>
+      {% endif %}
+      </div>
+            <div class="page">
+                {% if data %}
+                    <ul id="pages" class="pagination pagination-sm pagination-xs">
+                        {% if data.first %}
+                            <li><a href="?page=1">1</a>
+                        {% endif %}
+                        {% if data.left %}
+                            {% if data.left_has_more %}
+                                <li><span>...</span>
+                            {% endif %}
+                            {% for i in data.left %}
+                                <li><a href="?page={{i}}">{{i}}</a>
+                            {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{data.page}}">{{data.page}}</a>
+                        {% if data.right %}
+                            {% for i in data.right %}
+                                <li><a href="?page={{i}}">{{i}}</a>
+                            {% endfor %}
+                            {% if data.right_has_more %}
+                                <li><span>...</span>
+                            {% endif %}
+                        {% endif %}
+                        {% if data.last %}
+                            <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+ <div class="page">
+                {% if data %}
+                    <ul id="pages" class="pagination pagination-sm pagination-xs">
+                        {% if data.first %}
+                            <li><a href="?page=1">1</a>
+                        {% endif %}
+                        {% if data.left %}
+                            {% if data.left_has_more %}
+                                <li><span>...</span>
+                            {% endif %}
+                            {% for i in data.left %}
+                                <li><a href="?page={{i}}">{{i}}</a>
+                            {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{data.page}}">{{data.page}}</a>
+                        {% if data.right %}
+                            {% for i in data.right %}
+                                <li><a href="?page={{i}}">{{i}}</a>
+                            {% endfor %}
+                            {% if data.right_has_more %}
+                                <li><span>...</span>
+                            {% endif %}
+                        {% endif %}
+                        {% if data.last %}
+                            <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+</div>
+
+
+
+<script>
+$(function() {
+  if ((location.pathname.split("/")[1]) !== ""){
+    $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').parent(".item").addClass('active');
+  } else {
+    $('.home').addClass('active');
+  }
+});
+</script>
+{% endblock %}

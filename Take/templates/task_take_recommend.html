@@ -1,0 +1,107 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}推荐接单 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main" style="margin-bottom: 30px">
+      <div class="main-inner body-width">
+       <a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a>
+      <div style="margin: 0px auto;text-align: center;width: 100%;" class= "main-cont__title1" >
+          <h3 style="font-size: 30px;font-weight: 700;">为&nbsp;您&nbsp;推&nbsp;荐</h3>
+          <p class="list">
+      </div>
+          <div class="main-cont main-recommend">
+              {% if current_page %}
+                  <ul class="main-cont__list clearfix">
+                      {% for task in current_page %}
+                          <li class="item">
+                              <img src="/media/{{ task.task_img }}" alt="#" class="img">
+                              <div class="info">
+                                  <a href="{% url 'Take:task_take_division_details' task.task_id %}" class="title">
+                                      {% if task.task_category == 'delivery' %}取快递
+                                      {% elif task.task_category == 'buy' %}代购
+                                      {% elif task.task_category == 'print'%}打印
+                                      {% elif task.task_category == 'umbrella'%}共享伞
+                                      {% else %}其他
+                                      {% endif %}
+                                  </a>
+                                  <span><span class="pp">❤</span> {{ task.send_collection_times}}&nbsp;&nbsp;&nbsp;</span>
+                                  <span><span class="bb" >¥</span>&nbsp;{{ task.task_reward }}</span>
+                                  <a href="{% url 'Take:task_take_division_details' task.task_id %}" class="icon-text__pink purchase">详情</a>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <p><h6>当前还没有为您推荐的任务！</h6></p>
+              {% endif %}
+         <div class="page" style="width: 20%; margin: 0px auto;">
+             {% if data %}
+                 <ul id="pages" class="pagination pagination-sm pagination-xs">
+                     {% if data.first %}
+                         <li><a href="?page=1">1</a></li>
+                     {% endif %}
+                     {% if data.left %}
+                         {% if data.left_has_more %}
+                             <li><span>...</span></li>
+                         {% endif %}
+                         {% for i in data.left %}
+                             <li><a href="?page={{i}}">{{i}}</a></li>
+                         {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+                        {% if data.right %}
+                            {% for i in data.right %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                            {% endfor %}
+                            {% if data.right_has_more %}
+                                <li><span>...</span></li>
+                            {% endif %}
+                        {% endif %}
+                        {% if data.last %}
+                            <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+                        {% endif %}
+                    </ul>
+             {% endif %}
+         </div>
+      </div>
+  </div>
+
+
+   <script type="text/javascript">
+       function like_change(obj,task_id){
+           var is_like=obj.getElementsByClassName('lactive').length==0
+           $.ajax({
+               type:'GET',
+               url:'/task_take_collection/',
+               data:{
+                'task_id':task_id,
+                'is_like':is_like,
+               },
+               cache:false,
+               success:function(data){
+                   console.log(data);
+                   if(data['collection_state']=='ok'){
+                       var record=$(obj.getElementsByClassName('like_state'))
+                       if(is_like){
+                           record.addClass('lactive')
+                       }
+                       else{
+                           record.removeClass('lactive')
+                       }}
+                       else{
+                           alert(data['message'])
+                       }
+                       },
+               error: function(xhr){
+                   console.log(xhr)
+               }
+           });
+       }
+   </script>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}商品详情 {% endblock %}
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <div class="main-inner body-width">
+        <span class="aa"><a href="{% url 'Send:popular_good'%}"><<返回</a></span>
+        {% if good %}
+      <div class="banner clearfix">
+        <div class="slider" id="slider">
+          <ul class="slider-wrapper">
+            <li class="item" data-title="(・●・)">
+              <img src="/media/{{ good.good_portrait }}" alt="#" size="cover" style="width:500px; height: 445px" >
+            </li>
+          </ul>
+        </div>
+         <div class="banner-info">
+          <div class="news body-border">
+            <ul>
+              <li class="rec">
+                  <p class="info">名称：{{ good.good_name}}</p>
+                  <p class="info"><a href="{% url 'Send:master_details' good.good_sender_id.id %}" class="a-info"><b>所属人：{{good.good_sender_id.username}}</b></a></p>
+                  <p class="info">联系方式：{{ good.good_sender_id.qq_num }}</p>
+                  <p class="info">价格：{{ good.good_prize}}</p>
+                  <p class="info">收藏数：{{ good.fav }}</p>
+                  <p class="info">加入购物车数：{{ good.car }}</p>
+                  <p class="info">发出时间：{{ good.good_time}}</p>
+                  <div class="bton">
+                      <button onclick="add_car(this,{{ good.good_id }})" class="fav">{% if good_car %}已加入购物车{% else %}加入购物车{% endif %}</button>
+                      <button onclick="good_favorite(this,{{ good.good_id }})" class="fav">{% if good_fav %}取消收藏{% else %}收藏{% endif %}</button>
+                  </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+                {% else %}
+                <p>当前没有详细信息！</p>
+            {% endif %}
+    </div>
+  </div>
+<script>
+    function  good_favorite(obj, good_id){
+        var is_fav = obj.innerHTML == "收藏"
+        $.ajax({
+            type:'GET',
+            url: "{% url 'Send:good_favorite' %}",
+            data:{
+                'good_id':good_id,
+                'is_fav':is_fav,
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                if (data['status'] == 'SUCCESS'){
+                    alert(data['message'])
+                    if (is_fav){
+                        obj.innerHTML="已收藏";
+                    }
+                    else {
+                        obj.innerHTML="收藏";
+                    }
+                }
+                else {
+                    alert(data['message'])
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+         });
+    }
+    function   add_car(obj, good_id){
+        var is_add = obj.innerHTML == "加入购物车"
+        $.ajax({
+            type:'GET',
+            url: "{% url 'Send:add_car' %}",
+            data:{
+                'good_id':good_id,
+                'is_add':is_add,
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                if (data['status'] == 'SUCCESS'){
+                    alert(data['message'])
+                    if (is_add){
+                        obj.innerHTML="已加入购物车";
+                    }
+                    else {
+                        obj.innerHTML="加入购物车";
+                    }
+                }
+                else {
+                    alert(data['message'])
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr)
+            }
+         });
+    }
+</script>
+{% endblock %}

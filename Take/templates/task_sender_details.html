@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}发单人详情{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="main" style="margin-bottom: 30px">
+       <div class="main-inner body-width" >
+          <a style="font-size: 16px;" href="{% url 'Take:task_take_division_details' task_id %}" class="cate"><<返回</a>
+              {% if sender %}
+                  <div class="banner clearfix">
+                      <div class="slider" id="slider">
+                          <ul class="slider-wrapper">
+                              <li class="item" data-title="(・●・)">
+                                  <img src="/media/{{ sender.avatar }}" alt="#" size="cover">
+                              </li>
+                          </ul>
+                  </div>
+                  <div class="banner-info" >
+                      <div class="news body-border" >
+                          <ul>
+                              <li class="rec">
+                                  <p class="info">发单人：
+                                      {% if sender.name %}
+                                          {{ sender.username }}
+                                      {% else %}
+                                          {{ sender.name }}
+                                      {% endif %}</p>
+                                  <p class="info">联系QQ：{{ sender.qq_num }}</p>
+                                  <p class="info">联系邮箱：{{ sender.email }}</p>
+                                  <p class="info">学院：{{ sender.college }}</p>
+                                  <p class="info">专业：{{ sender.major }}</p>
+                              </li>
+                          </ul>
+                      </div>
+                   </div>
+              {% else %}
+                <p><h6>当前没有详细信息！</h6></p>
+              {% endif %}
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.js' %}"></script>
+{% endblock %}

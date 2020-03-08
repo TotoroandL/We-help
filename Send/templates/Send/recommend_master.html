@@ -1,0 +1,88 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}推荐达人 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/rec_ms.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+      <span class="aa"><a href="{% url 'Send:send_category'%}" class="cate"><<返回发单页</a><span style="color: #0f0f0f; float: left; font-size: 18px"><b>推荐达人</b></span></span>
+          <div class="banner clearfix">
+              <div class="main-cont main-cate">
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background:  url({% static 'images/dm21.png' %}) no-repeat right; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:recommend_master' %}" class="info-title"><p><b>推&nbsp;荐</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm22.png' %}) no-repeat right; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:popular_master' %}" class="info-title"><p><b><u>热&nbsp;门</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm23.png' %}) no-repeat scroll left; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:masters' %}" class="info-title"><p><b><u>所&nbsp;有</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="main-cont main-cate2">
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background: url({% static 'images/cate01.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:master_category' delivery.master_type_id %}" class="info-title"><p><b><u>快递达人</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate02.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:master_category' buy.master_type_id %}" class="info-title"><p><b><u>代购达人</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate03.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:master_category' print.master_type_id %}" class="info-title"><p><b><u>打印达人</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate04.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:master_category' umbrella.master_type_id %}" class="info-title"><p><b><u>共享伞达人</u></b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/cate05.png' %}) no-repeat; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Send:master_category' others.master_type_id %}" class="info-title"><p><b><u>其他</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      <div class="main-cont main-user">
+          {% if user_list %}
+              <div class="main-cont__title">
+                  <h3>推荐达人</h3>
+              </div>
+              <ul class="main-cont__list clearfix">
+              {% for user in user_list %}
+                  <li class="item">
+                      <a href="{% url 'Send:master_details' user.id %}" ><img src="/media/{{ user.avatar }}" style="height: 112px;width: 100%;" ></a>
+                      <a href="{% url 'Send:master_details' user.id %}" class="headImg"><img src="/media/{{ user.avatar }}" alt="#"></a>
+                      <div class="info">
+                          <a href="{% url 'Send:master_details' user.id %}" class="info-title">{{ user.username}}</a>
+                          <p>{{ user.final_remark}}分</p>
+                          <p>接单总数： <b>{{ user.task_take_num}}</b></p>
+                      </div>
+                  </li>
+              {% endfor %}
+              </ul>
+          {% else %}
+
+          {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'accounts/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}
+收件箱
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock %}
+
+    {% block content %}
+<div class="nav1">
+
+
+               <div class="item home">
+                   <img src="{% static 'images/icon/system_message.jpg' %}" class="nav-img">
+                    <a href="{% url 'Communication:system_message' %}">系统通知</a>
+               </div>
+               <div class="item">
+                   <img src="{% static 'images/icon/person_message.jpg' %}" class="nav-img">
+                   收信箱
+               </div>
+               <div class="item">
+                   <img src="{% static 'images/icon/message_by_me.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:message_by_me'%}">已发私信</a>
+               </div>
+              <div class="item">
+                  <img src="{% static 'images/icon/message_marked.jpg' %}" class="nav-img">
+                  <a href="{% url 'Communication:marked_message'%}">特别标注</a>
+              </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/chat.jpg' %}" class="nav-img">
+                    <a href="{% url 'Communication:chat'%}">聊天室</a>
+               </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/message_read.jpg' %}" class="nav-img">
+                    <a href="{% url 'Communication:message_read'%}">已读信息</a>
+               </div>
+                <div class="item">
+                    <img src="{% static 'images/icon/write_message.png' %}" class="nav-img">
+                   <a href="{% url 'Communication:write_message'%}">写信</a>
+               </div>
+              <div class="item">
+                  <img src="{% static 'images/icon/contact_us.jpg' %}" class="nav-img">
+                   <a href="{% url 'Communication:contact_us'%}">反馈</a>
+               </div>
+            </div>
+
+     <div class="content">
+            <div class="panel-heading"style="background-color:#C1C3D1;border-color:white;font-size: 15px">
+        收件箱
+            </div>
+   <table class="table ">
+    <thead>
+      <tr>
+       <th>发送人</th>
+       <th>标题</th>
+          <th>发送时间</th>
+           <th>标记</th>
+      </tr>
+    </thead>
+  <tbody>
+  {% for message in good_list %}
+     <tr>
+       <td>{{ message.message_sender }}</td>
+       <td><a href="{% url 'Communication:message_details' message.message_id%}">{{ message.title }}</a></td>
+      <td>{{ message.c_time }}</td>
+     <td> <a href="{% url 'Communication:mark_by_receiver' message.message_id%}">标记</a></td>
+     {% endfor %}
+     </tr>
+  </tbody>
+</table>
+
+                                <div class="page">
+                {% if data %}
+                    <ul id="pages" class="pagination pagination-sm pagination-xs">
+                        {% if data.first %}
+                            <li><a href="?page=1">1</a></li>
+                        {% endif %}
+                        {% if data.left %}
+                            {% if data.left_has_more %}
+                                <li><span>...</span></li>
+                            {% endif %}
+                            {% for i in data.left %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+                        {% if data.right %}
+                            {% for i in data.right %}
+                                <li><a href="?page={{i}}">{{i}}</a></li>
+                            {% endfor %}
+                            {% if data.right_has_more %}
+                                <li><span>...</span></li>
+                            {% endif %}
+                        {% endif %}
+                        {% if data.last %}
+                            <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            </div>
+
+
+
+        {% endblock%}

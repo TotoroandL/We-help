@@ -1,0 +1,305 @@
+.body-width {
+  width: 1200px;
+  margin: 0 auto;
+}
+/* ====== main ====== */
+.main {
+  position: relative;
+  padding-bottom: 80px;
+  background-color: #fcffff;
+}
+
+.main-inner  {
+  padding-top: 40px;
+}
+.banner {
+  position: relative;
+  height: 325px;
+}
+.banner-info {
+
+  position: relative;
+  float: right;
+  height: 135px;
+}
+.banner-info a {
+
+  display: inline-block;
+}
+.banner-info .news {
+  color: #acf9fa;
+  width: 466px;
+  height: 135px;
+  margin-bottom: 20px;
+}
+.banner-info .news ul {
+  padding: 0px;
+}
+
+.banner-info .news li.rec {
+  padding-left: 0px;
+  height: 140px;
+  width: 466px;
+  line-height:50px;
+  background-image: url(../images/my/pop01.png);
+}
+.banner-info .news li.rec a {
+  font-variant-position: initial;
+  color: #8a403e;
+  font-size: 3.2em;
+  font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  margin-left: 150px;
+  margin-top: 45px;
+}
+.banner-info .news li.rec a :hover{
+  color: #b66464;
+}
+.banner-info .news li.pop {
+  padding-left: 0px;
+  margin-top:10px;
+  height: 140px;
+  width: 466px;
+  line-height:50px;
+  background-image: url(../images/my/pop02.png);
+}
+.banner-info .news li.pop a {
+    color: #b05d55;
+  font-size: 3.2em;
+  font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  margin-left: 150px;
+  margin-top: 45px;
+}
+.banner-info .news li.pop a:hover {
+    color: #c06b57;
+}
+.banner-info .news li.all {
+  padding-left: 0px;
+  margin-top:10px;
+  height: 140px;
+  width: 466px;
+  line-height:50px;
+  background-image: url(../images/my/pop03.png);
+}
+.banner-info .news li.all a {
+  color: #f2879a;
+  font-size: 3.2em;
+  font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  margin-left: 150px;
+  margin-top: 45px;
+}
+.banner-info .news li.all a :hover{
+  color: #ffabb0;
+}
+.cate {
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: #5c5c5c;
+  margin-bottom: 20px;
+}
+/* main-cate */
+
+.main-cate .item {
+  left: 20%;
+  position: relative;
+    border-radius: 20px;
+    width: 250px;
+  height: 150px;
+
+}
+.main-cate .pic {
+  width: 250px;
+  height: 200px;
+}
+
+.main-cate .info {
+  margin-top:30%;
+  text-align: center;
+}
+.main-cate .info-title {
+  line-height: 40px;
+}
+.main-cate p {
+  font-weight: bolder;
+  font-family: 黑体;
+  color: #ffffff;
+  font-size: 2.8em;
+  text-shadow: 2px 2px 2px #5e0b95;
+}
+.main-cate p :hover{
+  color: #5d0b95;
+}
+.main-cate b {}
+/* ====== 内容列表 ====== */
+/* main-cate2 */
+.main-cate2{
+  height: 140px;
+}
+.main-cate2 .item {
+  margin-top: 60px;
+    border-radius: 8px;
+    width: 183px;
+  height: 78px;
+    border: #b668ce 1px solid;
+     background-color:  #ffffff;
+}
+.main-cate2 .pic {
+  width: 183px;
+  height: 120px;
+   background-color:  #ffffff;
+}
+.main-cate2 .info {
+  margin-top:0%;
+  text-align: center;
+}
+.main-cate2 .info-title {
+  line-height: 68px;
+}
+.main-cate2 p {
+  font-family: 微软雅黑;
+  color: #6a0daa;
+  font-size: 2.2em;
+    margin-top: 0%;
+}
+
+
+/* ====== 内容列表 ====== */
+.main-cont__title {
+  position: relative;
+  height: 88px;
+  margin-top: 40px;
+  border-top: 1px solid #bcade4;
+}
+.main-cont__title h3 {
+  font-size: 18px;
+  line-height: 88px;
+}
+.main-cont__title .more {
+  position: absolute;
+  right: 0;
+  top: 28px;
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  background-color: #22b4f6;
+  text-decoration: none;
+  font-size: 12px;
+}
+.main-cont__title .more:hover {
+  background-color: #1e9ed8;
+}
+.main-cont__list {
+  margin-right: -20px;
+}
+.main-cont__list .item {
+  position: relative;
+  top: 0;
+  float: left;
+  width: 224px;
+  margin-right: 20px;
+  border: 1px solid #dedfe0;
+  background-color: #fff;
+  box-sizing: border-box;
+    margin-top: 20px;
+  transition: top 0.2s;
+}
+.main-cont__list .item:hover {
+  top: -3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+}
+
+/* main-recommend */
+.main-recommend .list {
+  position: absolute;
+  top: 37px;
+  right: 10px;
+  font-size: 0;
+}
+.main-recommend .list em,
+.main-recommend .list a,
+.main-recommend .list span {
+  display: inline-block;
+  font-size: 12px;
+}
+.main-recommend .list em {
+  color: #666;
+  margin-right: 6px;
+}
+.main-recommend .list span {
+  padding: 0 12px;
+  color: #ddd;
+}
+.main-recommend .item {
+  position: relative;
+  height: 298px;
+}
+.main-recommend .info {
+  padding-left: 12px;
+}
+.main-recommend .info .title {
+  line-height: 48px;
+  font-weight: 700;
+}
+.main-recommend .info span {
+  color: #888;
+}
+.main-recommend .info .purchase {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 56px;
+  height: 25px;
+  line-height: 25px;
+  color: #fff;
+  background-color: #ffbb33;
+}
+/* main-user */
+.main-user .item {
+  position: relative;
+  height: 254px;
+}
+.main-user .pic {
+  width: 100%;
+  height: 112px;
+}
+.main-user .headImg {
+  position: absolute;
+  left: 50%;
+  top: 68px;
+  width: 88px;
+  height: 88px;
+  margin-left: -44px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.main-user .headImg img {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.main-user .info {
+  margin-top: 44px;
+  text-align: center;
+}
+.main-user .info-title {
+  line-height: 32px;
+}
+.main-user p {
+  line-height: 20px;
+  color: #888;
+  font-size: 12px;
+}
+.main-user .icon-star {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  background: url(../images/1.png) -4px -52px no-repeat;
+  vertical-align: -2px;
+}
+.main-user b {}

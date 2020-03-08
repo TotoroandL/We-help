@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}接任务 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/sd_cate.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+          <div class="banner clearfix" >
+              <div class="banner-info" >
+                  <div style=" margin-left: 20px;margin-right: 124px">
+                      <div class="news body-border">
+                          <ul >
+                          <li class="rec" style="background: url({% static 'images/dm01.png'%}) no-repeat; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_recommend' %}"> <b><u>推荐接单</u></b></a>
+                          </li>
+                          <li class="pop" style="background: url({% static 'images/dm02.png'%}) no-repeat right; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_competition' %}"><b><u>参加大赛</u></b></a>
+                          </li>
+                          <li class="all" style="background: url({% static 'images/dm01.png'%}) no-repeat left; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_tips' %}"><b><u>接单说明</u></b></a>
+                          </li>
+                          </ul>
+                       </div>
+                  </div>
+              </div>
+              <div class="banner-info">
+                  <div class="news body-border">
+                      <ul >
+                          <li class="rec" style="background: url({% static 'images/dm01.png'%}) no-repeat; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_division_all' %}"> <b><u>普通接单</u></b></a>
+                          </li>
+                          <li class="pop" style="background: url({% static 'images/dm02.png'%}) no-repeat right; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_goods' %}"><b><u>上传商品</u></b></a>
+                          </li>
+                          <li class="all" style="background: url({% static 'images/dm01.png'%}) no-repeat left; border: #bcade4 1px solid">
+                              <a href="{% url 'Take:task_take_example' %}"><b><u>接单案例</u></b></a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

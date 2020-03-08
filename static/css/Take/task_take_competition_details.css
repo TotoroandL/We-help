@@ -1,0 +1,17 @@
+.like{
+    margin-top: 5px;
+    color: black;
+    cursor: pointer;
+    display:inline-block;
+    font-size:15px;
+}
+.like .lactive{
+    color: red;
+}
+img{
+    width:100%;
+    height:auto;
+}
+#competition{
+    width: 30%;
+}

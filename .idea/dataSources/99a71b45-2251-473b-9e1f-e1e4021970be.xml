@@ -1,0 +1,1534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.17">
+    <root id="1">
+      <ServerVersion>3.20.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Login_board"/>
+    <table id="7" parent="2" name="Login_collection"/>
+    <table id="8" parent="2" name="Login_collection_collection_collector_id"/>
+    <table id="9" parent="2" name="Login_collection_collection_thing_id"/>
+    <table id="10" parent="2" name="Login_collectioncompetition"/>
+    <table id="11" parent="2" name="Login_collectioncompetition_collectioncompetition_collector_id"/>
+    <table id="12" parent="2" name="Login_collectioncompetition_collectioncompetition_thing_id"/>
+    <table id="13" parent="2" name="Login_competition"/>
+    <table id="14" parent="2" name="Login_good"/>
+    <table id="15" parent="2" name="Login_goodcar"/>
+    <table id="16" parent="2" name="Login_goodfavorite"/>
+    <table id="17" parent="2" name="Login_goodtype"/>
+    <table id="18" parent="2" name="Login_masterfavorite"/>
+    <table id="19" parent="2" name="Login_masterlike"/>
+    <table id="20" parent="2" name="Login_mastertype"/>
+    <table id="21" parent="2" name="Login_message"/>
+    <table id="22" parent="2" name="Login_post"/>
+    <table id="23" parent="2" name="Login_report"/>
+    <table id="24" parent="2" name="Login_suggestion"/>
+    <table id="25" parent="2" name="Login_tasksend"/>
+    <table id="26" parent="2" name="Login_tasktake"/>
+    <table id="27" parent="2" name="Login_topic"/>
+    <table id="28" parent="2" name="Login_user"/>
+    <table id="29" parent="2" name="Login_user_groups"/>
+    <table id="30" parent="2" name="Login_user_user_permissions"/>
+    <table id="31" parent="2" name="auth_group"/>
+    <table id="32" parent="2" name="auth_group_permissions"/>
+    <table id="33" parent="2" name="auth_permission"/>
+    <table id="34" parent="2" name="django_admin_log"/>
+    <table id="35" parent="2" name="django_content_type"/>
+    <table id="36" parent="2" name="django_migrations"/>
+    <table id="37" parent="2" name="django_session"/>
+    <table id="38" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="39" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="40" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="6" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="6" name="description">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="6" name="sqlite_autoindex_Login_board_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="45" parent="6">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Login_board_1</UnderlyingIndexName>
+    </key>
+    <column id="46" parent="7" name="collection_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="7" name="collection_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="48" parent="7">
+      <ColNames>collection_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="8" name="collection_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="8" name="user_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="8" name="Login_collection_collection_collector_id_collection_id_user_id_05733cfc_uniq">
+      <ColNames>collection_id
+user_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="53" parent="8" name="Login_collection_collection_collector_id_collection_id_a63e6d48">
+      <ColNames>collection_id</ColNames>
+    </index>
+    <index id="54" parent="8" name="Login_collection_collection_collector_id_user_id_4c4b6eef">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="55" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="56" parent="8">
+      <ColNames>collection_id</ColNames>
+      <RefTableName>Login_collection</RefTableName>
+      <RefColNames>collection_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="57" parent="8">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="58" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="9" name="collection_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="9" name="tasksend_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="61" parent="9" name="Login_collection_collection_thing_id_collection_id_tasksend_id_01699720_uniq">
+      <ColNames>collection_id
+tasksend_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="62" parent="9" name="Login_collection_collection_thing_id_collection_id_a9f938e2">
+      <ColNames>collection_id</ColNames>
+    </index>
+    <index id="63" parent="9" name="Login_collection_collection_thing_id_tasksend_id_cc513271">
+      <ColNames>tasksend_id</ColNames>
+    </index>
+    <key id="64" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="65" parent="9">
+      <ColNames>collection_id</ColNames>
+      <RefTableName>Login_collection</RefTableName>
+      <RefColNames>collection_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="66" parent="9">
+      <ColNames>tasksend_id</ColNames>
+      <RefTableName>Login_tasksend</RefTableName>
+      <RefColNames>task_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="67" parent="10" name="collectioncompetition_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="10" name="collectioncompetition_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="69" parent="10">
+      <ColNames>collectioncompetition_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="70" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="11" name="collectioncompetition_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="11" name="user_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="73" parent="11" name="Login_collectioncompetition_collectioncompetition_collector_id_collectioncompetition_id_user_id_8a6b3dce_uniq">
+      <ColNames>collectioncompetition_id
+user_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="74" parent="11" name="Login_collectioncompetition_collectioncompetition_collector_id_collectioncompetition_id_5a0e3af0">
+      <ColNames>collectioncompetition_id</ColNames>
+    </index>
+    <index id="75" parent="11" name="Login_collectioncompetition_collectioncompetition_collector_id_user_id_57f98f4e">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="76" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="77" parent="11">
+      <ColNames>collectioncompetition_id</ColNames>
+      <RefTableName>Login_collectioncompetition</RefTableName>
+      <RefColNames>collectioncompetition_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="78" parent="11">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="79" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="80" parent="12" name="collectioncompetition_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="12" name="competition_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="82" parent="12" name="Login_collectioncompetition_collectioncompetition_thing_id_collectioncompetition_id_competition_id_341ee6b0_uniq">
+      <ColNames>collectioncompetition_id
+competition_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="83" parent="12" name="Login_collectioncompetition_collectioncompetition_thing_id_collectioncompetition_id_c324925f">
+      <ColNames>collectioncompetition_id</ColNames>
+    </index>
+    <index id="84" parent="12" name="Login_collectioncompetition_collectioncompetition_thing_id_competition_id_10cb31c5">
+      <ColNames>competition_id</ColNames>
+    </index>
+    <key id="85" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="86" parent="12">
+      <ColNames>collectioncompetition_id</ColNames>
+      <RefTableName>Login_collectioncompetition</RefTableName>
+      <RefColNames>collectioncompetition_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="87" parent="12">
+      <ColNames>competition_id</ColNames>
+      <RefTableName>Login_competition</RefTableName>
+      <RefColNames>competition_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="88" parent="13" name="competition_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="13" name="competition_title">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="13" name="competition_description">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="13" name="competition_time">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="13" name="competition_colletion_times">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="13" name="competition_sender_id_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="13" name="competition_poster">
+      <Position>7</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="95" parent="13" name="Login_competition_competition_sender_id_id_599b6354">
+      <ColNames>competition_sender_id_id</ColNames>
+    </index>
+    <key id="96" parent="13">
+      <ColNames>competition_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="97" parent="13">
+      <ColNames>competition_sender_id_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="98" parent="14" name="good_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="99" parent="14" name="good_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="100" parent="14" name="good_prize">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="101" parent="14" name="good_description">
+      <Position>4</Position>
+      <DataType>varchar(256)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="14" name="good_time">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="14" name="good_category_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="104" parent="14" name="good_sender_id_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="14" name="car">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="14" name="fav">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="14" name="good_portrait">
+      <Position>10</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="108" parent="14" name="Login_good_good_category_id_a3b385ae">
+      <ColNames>good_category_id</ColNames>
+    </index>
+    <index id="109" parent="14" name="Login_good_good_sender_id_id_fcce5103">
+      <ColNames>good_sender_id_id</ColNames>
+    </index>
+    <key id="110" parent="14">
+      <ColNames>good_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="111" parent="14">
+      <ColNames>good_category_id</ColNames>
+      <RefTableName>Login_goodtype</RefTableName>
+      <RefColNames>good_type_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="112" parent="14">
+      <ColNames>good_sender_id_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="113" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="114" parent="15" name="add_car_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="15" name="good_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="15" name="user_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="117" parent="15" name="Login_goodcar_good_id_168810e7">
+      <ColNames>good_id</ColNames>
+    </index>
+    <index id="118" parent="15" name="Login_goodcar_user_id_22ae4c29">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="119" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="120" parent="15">
+      <ColNames>good_id</ColNames>
+      <RefTableName>Login_good</RefTableName>
+      <RefColNames>good_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="121" parent="15">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="122" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="123" parent="16" name="favorite_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="16" name="good_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="125" parent="16" name="user_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="126" parent="16" name="Login_goodfavorite_good_id_9d552261">
+      <ColNames>good_id</ColNames>
+    </index>
+    <index id="127" parent="16" name="Login_goodfavorite_user_id_94ad736f">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="128" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="129" parent="16">
+      <ColNames>good_id</ColNames>
+      <RefTableName>Login_good</RefTableName>
+      <RefColNames>good_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="130" parent="16">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="131" parent="17" name="good_type_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="132" parent="17" name="good_type_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <key id="133" parent="17">
+      <ColNames>good_type_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="134" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="135" parent="18" name="fav_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="136" parent="18" name="master_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="137" parent="18" name="user_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="138" parent="18" name="Login_masterfavorite_master_id_f44a0e85">
+      <ColNames>master_id</ColNames>
+    </index>
+    <index id="139" parent="18" name="Login_masterfavorite_user_id_fae1fd8b">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="140" parent="18">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="141" parent="18">
+      <ColNames>master_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="142" parent="18">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="143" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="144" parent="19" name="like_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="145" parent="19" name="master_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="146" parent="19" name="user_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="147" parent="19" name="Login_masterlike_master_id_831ffb08">
+      <ColNames>master_id</ColNames>
+    </index>
+    <index id="148" parent="19" name="Login_masterlike_user_id_cd3aae82">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="149" parent="19">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="150" parent="19">
+      <ColNames>master_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="151" parent="19">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="152" parent="20" name="master_type_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="153" parent="20" name="master_type_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+    </column>
+    <key id="154" parent="20">
+      <ColNames>master_type_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="155" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="156" parent="21" name="txtmessage">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="157" parent="21" name="message_sender">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="158" parent="21" name="message_receiver">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="159" parent="21" name="c_time">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="160" parent="21">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="161" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="162" parent="22" name="message">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="163" parent="22" name="created_at">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="164" parent="22" name="updated_at">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="165" parent="22" name="created_by_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="166" parent="22" name="topic_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="167" parent="22" name="updated_by_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="168" parent="22" name="Login_post_created_by_id_69b850ba">
+      <ColNames>created_by_id</ColNames>
+    </index>
+    <index id="169" parent="22" name="Login_post_topic_id_d6a9c7c3">
+      <ColNames>topic_id</ColNames>
+    </index>
+    <index id="170" parent="22" name="Login_post_updated_by_id_f43277f5">
+      <ColNames>updated_by_id</ColNames>
+    </index>
+    <key id="171" parent="22">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="172" parent="22">
+      <ColNames>created_by_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="173" parent="22">
+      <ColNames>topic_id</ColNames>
+      <RefTableName>Login_topic</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="174" parent="22">
+      <ColNames>updated_by_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="175" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="176" parent="23" name="message">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="177" parent="23" name="report_created_by_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="178" parent="23" name="report_topic_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="179" parent="23" name="Login_report_report_created_by_id_2ced5737">
+      <ColNames>report_created_by_id</ColNames>
+    </index>
+    <index id="180" parent="23" name="Login_report_report_topic_id_b420a4bc">
+      <ColNames>report_topic_id</ColNames>
+    </index>
+    <key id="181" parent="23">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="182" parent="23">
+      <ColNames>report_created_by_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="183" parent="23">
+      <ColNames>report_topic_id</ColNames>
+      <RefTableName>Login_topic</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="184" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="185" parent="24" name="suggestion">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="186" parent="24" name="suggestion_sender">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="187" parent="24" name="c_time">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="188" parent="24">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="189" parent="25" name="task_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="190" parent="25" name="task_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="191" parent="25" name="task_place">
+      <Position>3</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="192" parent="25" name="task_reward">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="193" parent="25" name="task_details">
+      <Position>5</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="194" parent="25" name="task_send_time">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="195" parent="25" name="task_img">
+      <Position>7</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="196" parent="25" name="task_state">
+      <Position>8</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <column id="197" parent="25" name="sender_id">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="198" parent="25" name="send_collection_times">
+      <Position>10</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="199" parent="25" name="task_category">
+      <Position>11</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <index id="200" parent="25" name="Login_tasksend_sender_id_74b666fd">
+      <ColNames>sender_id</ColNames>
+    </index>
+    <key id="201" parent="25">
+      <ColNames>task_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="202" parent="25">
+      <ColNames>sender_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="203" parent="26" name="task_take_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="204" parent="26" name="task_take_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="205" parent="26" name="task_take_mark">
+      <Position>3</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="206" parent="26" name="task_send_id_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="207" parent="26" name="task_taker_id_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="208" parent="26" name="task_take_state">
+      <Position>6</Position>
+      <DataType>varchar(32)|0s</DataType>
+    </column>
+    <index id="209" parent="26" name="sqlite_autoindex_Login_tasktake_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>task_send_id_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="210" parent="26" name="Login_tasktake_task_taker_id_id_e5c1c74e">
+      <ColNames>task_taker_id_id</ColNames>
+    </index>
+    <key id="211" parent="26">
+      <ColNames>task_take_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="212" parent="26">
+      <ColNames>task_send_id_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Login_tasktake_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="213" parent="26">
+      <ColNames>task_send_id_id</ColNames>
+      <RefTableName>Login_tasksend</RefTableName>
+      <RefColNames>task_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="214" parent="26">
+      <ColNames>task_taker_id_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="215" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="216" parent="27" name="subject">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="217" parent="27" name="last_updated">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="218" parent="27" name="views">
+      <Position>4</Position>
+      <DataType>integer unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="219" parent="27" name="board_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="220" parent="27" name="starter_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="221" parent="27" name="Login_topic_board_id_3c17c8ec">
+      <ColNames>board_id</ColNames>
+    </index>
+    <index id="222" parent="27" name="Login_topic_starter_id_462908af">
+      <ColNames>starter_id</ColNames>
+    </index>
+    <key id="223" parent="27">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="224" parent="27">
+      <ColNames>board_id</ColNames>
+      <RefTableName>Login_board</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="225" parent="27">
+      <ColNames>starter_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="226" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="227" parent="28" name="password">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="228" parent="28" name="last_login">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="229" parent="28" name="is_superuser">
+      <Position>4</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="230" parent="28" name="first_name">
+      <Position>5</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="231" parent="28" name="last_name">
+      <Position>6</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="232" parent="28" name="is_staff">
+      <Position>7</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="233" parent="28" name="is_active">
+      <Position>8</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="28" name="date_joined">
+      <Position>9</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="235" parent="28" name="username">
+      <Position>10</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="236" parent="28" name="name">
+      <Position>11</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="237" parent="28" name="gender">
+      <Position>12</Position>
+      <DataType>varchar(2)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="238" parent="28" name="college">
+      <Position>13</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="239" parent="28" name="major">
+      <Position>14</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="240" parent="28" name="birthday">
+      <Position>15</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="241" parent="28" name="email">
+      <Position>16</Position>
+      <DataType>varchar(254)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="242" parent="28" name="qq_num">
+      <Position>17</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="243" parent="28" name="avatar">
+      <Position>18</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="244" parent="28" name="final_remark">
+      <Position>19</Position>
+      <DataType>real|0s</DataType>
+    </column>
+    <column id="245" parent="28" name="task_take_num">
+      <Position>20</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="246" parent="28" name="alike">
+      <Position>21</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="247" parent="28" name="is_login">
+      <Position>22</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="248" parent="28" name="become_master_datetime">
+      <Position>23</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="249" parent="28" name="master_take_delivery_times">
+      <Position>24</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="250" parent="28" name="master_take_buy_times">
+      <Position>25</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="251" parent="28" name="master_take_print_times">
+      <Position>26</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="252" parent="28" name="master_take_umbrella_times">
+      <Position>27</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="253" parent="28" name="master_take_others_times">
+      <Position>28</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="254" parent="28" name="attention">
+      <Position>29</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="255" parent="28" name="collection_buy_times">
+      <Position>30</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="256" parent="28" name="collection_delivery_times">
+      <Position>31</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="257" parent="28" name="collection_others_times">
+      <Position>32</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="28" name="collection_print_times">
+      <Position>33</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="259" parent="28" name="collection_umbrella_times">
+      <Position>34</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="260" parent="28" name="master_type_id">
+      <Position>35</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="261" parent="28" name="sqlite_autoindex_Login_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="262" parent="28" name="Login_user_master_type_id_92d5abd7">
+      <ColNames>master_type_id</ColNames>
+    </index>
+    <key id="263" parent="28">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="264" parent="28">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Login_user_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="265" parent="28">
+      <ColNames>master_type_id</ColNames>
+      <RefTableName>Login_mastertype</RefTableName>
+      <RefColNames>master_type_id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="266" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="267" parent="29" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="268" parent="29" name="group_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="269" parent="29" name="Login_user_groups_user_id_group_id_e38488d9_uniq">
+      <ColNames>user_id
+group_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="270" parent="29" name="Login_user_groups_user_id_1bf00fd4">
+      <ColNames>user_id</ColNames>
+    </index>
+    <index id="271" parent="29" name="Login_user_groups_group_id_7d4f5164">
+      <ColNames>group_id</ColNames>
+    </index>
+    <key id="272" parent="29">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="273" parent="29">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="274" parent="29">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="275" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="276" parent="30" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="277" parent="30" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="278" parent="30" name="Login_user_user_permissions_user_id_permission_id_49d842f7_uniq">
+      <ColNames>user_id
+permission_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="279" parent="30" name="Login_user_user_permissions_user_id_7facbddd">
+      <ColNames>user_id</ColNames>
+    </index>
+    <index id="280" parent="30" name="Login_user_user_permissions_permission_id_23e2afaa">
+      <ColNames>permission_id</ColNames>
+    </index>
+    <key id="281" parent="30">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="282" parent="30">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="283" parent="30">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="284" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="285" parent="31" name="name">
+      <Position>2</Position>
+      <DataType>varchar(80)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="286" parent="31" name="sqlite_autoindex_auth_group_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="287" parent="31">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="288" parent="31">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_auth_group_1</UnderlyingIndexName>
+    </key>
+    <column id="289" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="290" parent="32" name="group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="291" parent="32" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="292" parent="32" name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq">
+      <ColNames>group_id
+permission_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="293" parent="32" name="auth_group_permissions_group_id_b120cbf9">
+      <ColNames>group_id</ColNames>
+    </index>
+    <index id="294" parent="32" name="auth_group_permissions_permission_id_84c5c92e">
+      <ColNames>permission_id</ColNames>
+    </index>
+    <key id="295" parent="32">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="296" parent="32">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="297" parent="32">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="298" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="299" parent="33" name="content_type_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="300" parent="33" name="codename">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="301" parent="33" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="302" parent="33" name="auth_permission_content_type_id_codename_01ab375a_uniq">
+      <ColNames>content_type_id
+codename</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="303" parent="33" name="auth_permission_content_type_id_2f476e4b">
+      <ColNames>content_type_id</ColNames>
+    </index>
+    <key id="304" parent="33">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="305" parent="33">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="306" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="307" parent="34" name="action_time">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="308" parent="34" name="object_id">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="309" parent="34" name="object_repr">
+      <Position>4</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="310" parent="34" name="change_message">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="311" parent="34" name="content_type_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="312" parent="34" name="user_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="313" parent="34" name="action_flag">
+      <Position>8</Position>
+      <DataType>smallint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="314" parent="34" name="django_admin_log_content_type_id_c4bce8eb">
+      <ColNames>content_type_id</ColNames>
+    </index>
+    <index id="315" parent="34" name="django_admin_log_user_id_c564eba6">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="316" parent="34">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="317" parent="34">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="318" parent="34">
+      <ColNames>user_id</ColNames>
+      <RefTableName>Login_user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="319" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="320" parent="35" name="app_label">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="321" parent="35" name="model">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="322" parent="35" name="django_content_type_app_label_model_76bd3d3b_uniq">
+      <ColNames>app_label
+model</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="323" parent="35">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="324" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="325" parent="36" name="app">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="326" parent="36" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="327" parent="36" name="applied">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="328" parent="36">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="329" parent="37" name="session_key">
+      <Position>1</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="330" parent="37" name="session_data">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="331" parent="37" name="expire_date">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="332" parent="37" name="sqlite_autoindex_django_session_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>session_key</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="333" parent="37" name="django_session_expire_date_a5c62663">
+      <ColNames>expire_date</ColNames>
+    </index>
+    <key id="334" parent="37">
+      <ColNames>session_key</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
+    </key>
+    <column id="335" parent="38" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="336" parent="38" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="337" parent="38" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="338" parent="38" name="rootpage">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="339" parent="38" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="340" parent="39" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="341" parent="39" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>

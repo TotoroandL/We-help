@@ -1,0 +1,43 @@
+#container{
+    height: 800px;
+    width: 300px;
+    margin: 10px auto;
+    border:1px solid red;
+    padding: 0px;
+}
+#user_info{
+    height: 150px;
+    width: 300px;
+    border:1px solid red;
+    padding-bottom:10px;
+}
+#button1{
+    height: 30px;
+    width: 300px;
+    border:1px solid red;
+}
+#task_info{
+    height: 150px;
+    width: 300px;
+    border:1px solid red;
+}
+#user_head_portrait{
+    height: 100px;
+    width: 100px;
+    background-color: #f5e79e;
+
+}
+.like{
+    margin-top: 5px;
+    color: black;
+    cursor: pointer;
+    display:inline-block;
+    font-size:15px;
+}
+.like .lactive{
+    color: red;
+}
+img{
+    width:100%;
+    height:auto;
+}

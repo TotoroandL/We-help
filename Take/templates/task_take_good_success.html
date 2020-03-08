@@ -1,0 +1,89 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}上传商品成功 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/ms_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-inner body-width">
+            <a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a>
+            <div class="banner clearfix" style="margin-bottom: 30px;">
+                {% if goodone %}
+                    <div class="slider" id="slider">
+                        <ul class="slider-wrapper">
+                            <li class="item" data-title="(・●・)">
+                            <img src="/media/{{ goodone.good_portrait }}" alt="#" width="500px">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="banner-info">
+                        <div class="news body-border">
+                            <ul>
+                                <li class="rec">
+                                    <p class="info">商品名称：{{ goodone.good_name }}</p>
+                                    <p class="info">商品类别：
+                                        {% if goodone.good_category.good_type_name == 'food' %}
+                                            食品
+                                        {% elif goodone.good_category.good_type_name == 'cloth' %}
+                                            衣服
+                                        {% elif goodone.good_category.good_type_name == 'furniture' %}
+                                            家具
+                                        {% elif goodone.good_category.good_type_name == 'stationary' %}
+                                            文具
+                                        {% elif goodone.good_category.good_type_name == 'others' %}
+                                            其他
+                                        {% endif %}
+                                    </p>
+                                    <p class="info">上传者：{{ goodone.good_sender_id.name }}</p>
+                                    <p class="info">价格：{{ goodone.good_prize}}</p>
+                                    <p class="info">上传时间：{{ goodone.good_time}}</p>
+                                    <div class="neirong2" >
+                                        <div class="neirong-left2" id="neirong_left1">商品详情：{{ goodone.good_description }}</div>
+                                    </div>
+                                    <div class="bton">
+                                        <a href="{% url 'Take:task_take_delete' goodone.good_id %}" style="background-color: #FFFFFF;"><button class="add">删除商品</button></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% else %}
+                    <p><h6>没有详情！</h6></p>
+                {% endif %}
+            </div>
+            <div class="main-cont main-recommend">
+                <div style="margin: 0px auto;text-align: center;width: 100%;" class= "main-cont__title" >
+                    <h3 style="font-size: 30px;font-weight: 700;">历&nbsp;史&nbsp;上&nbsp;传</h3>
+                    <p class="list">
+                </div>
+                {% if goods %}
+                    <ul class="main-cont__list clearfix">
+                        {% for good in goods %}
+                            <li class="item">
+                                  <img src="/media/{{ good.good_portrait }}" alt="#" class="img">
+                                  <div class="info">
+                                      <a href="#" class="title">商品类别：
+                                          {% if good.good_category.good_type_name == 'food'%}食物
+                                          {% elif good.good_category.good_type_name == 'food'%}衣服
+                                          {% elif good.good_category.good_type_name == 'food'%}家具
+                                          {% elif good.good_category.good_type_name == 'food'%}书籍
+                                          {% elif good.good_category.good_type_name == 'food'%}文具
+                                          {% elif good.good_category.good_type_name == 'food'%}其他
+                                          {% endif %}
+                                      </a>
+                                      <span><span class="bb" >¥</span>&nbsp;{{ good.good_prize }}</span>
+                                  </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>没有历史上传！</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

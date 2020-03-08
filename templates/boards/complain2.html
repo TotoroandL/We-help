@@ -1,0 +1,15 @@
+{% extends 'boards/base.html' %}
+
+{% block title %}report{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active"><a href="{% url 'luntan' %}">总板块</a></li>
+
+  <li class="breadcrumb-item active">举报帖子</li>
+{% endblock %}
+
+{% block content %}
+<h2 >举报成功！</h2>
+<a href="{% url 'luntan' %}" class="btn btn-outline-success" role="button">返回</a>
+
+{% endblock %}

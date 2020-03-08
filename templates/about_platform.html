@@ -1,0 +1,130 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}平台介绍{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+    <style type="text/css">
+        .container{
+            width: 100%;
+            height:1100px;
+            margin: 20px auto;
+        }
+        .content{
+            width:50%;
+            border:1px #00aced;
+            margin: 0px auto;
+        }
+        .title{
+            margin:15px auto;
+            font-size: 2.0em;
+            color: #3b1b55;
+            font-family: 微软雅黑;
+            font-weight: 700;
+            width: 100%;
+            text-align: center;
+        }
+        .line{
+            margin-bottom:30px;
+            width: 100%;
+            height:1px;
+            background-color: rgba(204, 204, 204, 0.4);
+        }
+        .chengyuan {
+            border: 1px solid #3b1b55;
+            height: 180px;
+            width:100%;
+            margin-bottom: 15px;
+        }
+        .touxiang{
+            width: 30%;
+            height: 180px;
+            float: left;
+            padding: 5px;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        .touxiang img{
+            width: 90%;
+            height: 90%;
+            margin-left: 15px;
+        }
+        .wenzi{
+            width: 60%;
+            margin-left: 5px;
+            float: right;
+            padding: 10px;
+        }
+        .mingzi{
+            font-size: 22px;
+            margin-bottom: 5px;
+            margin-top: 12px;
+            color: #210f2f;
+        }
+        .xuexiao{
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .zuoyouming{
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 25px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="title">平台介绍</div>
+        <div class="line"></div>
+        <div class="article">
+            <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/send.jpg' %}">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">发单</div>
+                    <div class="zuoyouming">
+                        在这里你可以将你的需求以任务的形式发布出去，也可以寻找合适的达人进行指定任务</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang">
+                    <img src="{%  static 'images/take.jpg' %}" alt="">
+                </div>
+                <div class="wenzi">
+                    <div class="mingzi">接单</div>
+                    <div class="zuoyouming">
+                        在这里你可以查看平台所有任务、热门任务并进行接单操作，还可以收藏自己喜欢的或者参加竞标大赛
+                    </div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/person.jpg' %}" alt=""></div>
+                <div class="wenzi">
+                    <div class="mingzi">个人中心</div>
+                    <div class="zuoyouming">
+                        在这里你可以上传头像，查看与修改个人信息，进行达人认证，查看已发订单、已接订单、收藏商品</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/information.jpeg' %}" alt=""></div>
+                <div class="wenzi">
+                    <div class="mingzi">信息中心</div>
+                    <div class="zuoyouming">
+                        在这里你可以查看系统通知、站内私信，对站内私信进行标记以便更好的找到它，你也可以给站内用户进行私信，在群聊室与大家一起实时群聊或者就问题与我们进行反馈</div>
+                </div>
+            </div>
+            <div class="chengyuan">
+                <div class="touxiang"><img src="{%  static 'images/talking.jpeg' %}" alt=""></div>
+                <div class="wenzi">
+                    <div class="mingzi">论坛</div>
+                    <div class="zuoyouming">
+                       在这里你可以结识兴趣相同的伙伴，与他们进行同话题的交流，来加入谈论吧</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

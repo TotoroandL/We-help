@@ -1,0 +1,89 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}大赛详情 {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/gd_dt.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-inner body-width">
+            <a style="font-size: 16px" href="{% url 'Take:task_take_competition' %}" class="cate"><<返回大赛首页</a>
+            {% if competition_one %}
+                <div class="banner clearfix">
+                    <div class="slider" id="slider">
+                        <ul class="slider-wrapper">
+                            <li class="item" data-title="(・●・)">
+                                <img src="/media/{{ competition_one.competition_poster }}" alt="#" style="width:500px; height: 445px">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="banner-info" >
+                        <div class="news body-border" >
+                            <ul>
+                                <li class="rec">
+                                    <div class="neirong">
+                                        <div class="neirong-left"><a href="#">大赛名称：{{ competition_one.competition_title }}</a></div>
+                                    </div>
+                                    <div class="neirong">
+                                        <div class="neirong-left"><a href="#">发布人：{{ competition_one.competition_sender_id.username }}</a></div>
+                                    </div>
+                                    <div class="neirong2" >
+                                        <div class="neirong-left2" id="neirong_left1">大赛详情：{{ competition_one.competition_description }}</div>
+                                    </div>
+                                    <div class="bton1">
+                                        <button onclick="collection_change(this,{{competition_one.competition_id }})" class="fav">{% if collectioncompetition %}已收藏{% else %}未收藏{% endif %}</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p><h6>当前没有详细信息！</h6></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javascript">
+     function collection_change(obj,competition_id){
+          var is_collection=obj.innerHTML == "未收藏"
+          var not_collection=obj.innerHTML == "已收藏"
+        $.ajax({
+            type:'GET',
+            url:"/Take/task_take_competition_collection/",
+            data:{
+                'competition_id':competition_id,
+                'is_collection':is_collection,
+            },
+            cache:false,
+            success:function(data){
+                console.log(data);
+                if(data['collection_state']=='ok'){
+                    alert(data['message'])
+                    if(is_collection){
+                    obj.innerHTML="已收藏";
+                    }
+                    else{
+                    obj.innerHTML="未收藏"
+                    }
+                }
+                else if(data['collection_state']=='ok-fail'){
+                    alert(data['message'])
+                    if (not_collection){
+                    obj.innerHTML="未收藏";
+                    }
+                    else{
+                    obj.innerHTML="已收藏"
+                    }
+                }
+            },
+             error: function(xhr){
+                    console.log(xhr)
+              }
+        });
+     }
+       </script>
+{% endblock %}

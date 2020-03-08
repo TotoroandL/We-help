@@ -1,0 +1,248 @@
+
+.body-width {
+  width: 1200px;
+  margin: 0 auto;
+}
+/* ====== main ====== */
+.main {
+  position: relative;
+  padding-bottom: 80px;
+  background-color: #fcffff;
+}
+.main-inner  {
+  padding-top: 40px;
+}
+.banner {
+  position: relative;
+  height: 445px;
+  padding-left: 18%;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 500px;
+  height: 445px;
+  box-shadow: 0 0 10px rgba(105, 8, 182, 0.84);
+}
+.slider-wrapper {
+  position: relative;
+}
+.slider .item {
+  float: left;
+  width: 710px;
+  height: 445px;
+}
+.slider .pic,
+.slider .pic img {
+    size: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-info {
+
+  position: relative;
+  float: right;
+  height: 135px;
+}
+.banner-info a {
+
+  display: inline-block;
+}
+
+
+.banner-info .news li.rec {
+  padding-left: 30px;
+  height: 445px;
+  width: 466px;
+  line-height:50px;
+    color: #ffffff;
+}
+.main-inner .aa {
+  font-size: 1.5em;
+  width: 10px;
+}
+.banner-info .news li.rec .a-info{
+  padding-left: 0px;
+  height: 50px;
+  width: 285px;
+  line-height:50px;
+  color: #9c07ff;
+  text-decoration: #4627e5 underline;
+}
+.banner-info .news li.rec .a-info:hover{
+  color: #6f0eb2;
+  background-color: rgba(222, 160, 255, 0.36);
+  text-decoration: none;
+}
+.banner-info .news li.rec p.info{
+  padding-left: 0px;
+  height: 50px;
+  line-height:100px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.banner-info .bton{
+    margin-top: 35px;
+    float:left;
+}
+.banner-info .fav{
+    width: 140px;
+    font-family: 仿宋体;
+      height: 40px;
+  line-height:40px;
+        font-size:1.5em ;
+    background-color: #6f0eb2;
+    border:1px #520a84 solid;
+}
+.banner-info .bton a{
+background-color: #6f0eb2;
+          height: 40px;
+}
+.banner-info .bton a:hover{
+color:none;
+}
+
+.take-title{
+  line-height:40px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+}
+
+.neirong{
+  width: 100%;
+  float:left;
+}
+.neirong1{
+  width: 100%;
+  float:left;
+  height: 100px;
+  overflow: auto;
+  padding-top: 7px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.neirong2{
+  width: 100%;
+  float:left;
+  height: 250px;
+  overflow: auto;
+  padding-top: 7px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.neirong-left{
+  width:50%;
+  float:left;
+    padding-left: 0px;
+  height: 50px;
+  line-height:100px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.neirong-left1{
+  width:100%;
+  float:left;
+    padding-left: 0px;
+  height: 50px;
+  line-height:100px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.neirong-left2{
+  width:100%;
+  float:left;
+  padding-top: 10px;
+    padding-left: 0px;
+  height: 100px;
+  line-height:40px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.neirong-right{
+  width: 50%;
+  float: right;
+   padding-left: 0px;
+  height: 50px;
+  line-height:100px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+
+}
+.banner-info .bton1{
+    margin-top: 30px;
+    float:left;
+    height:40px;
+}
+.banner-info .bton1 a{
+background-color: rgba(111, 14, 178, 0.99);
+          height: 0px;
+}
+.banner-info .bton1 a:hover{
+color: #6f0eb2;
+}
+.delete_success{
+  width: 100%;
+  font-size: 2.5em;
+  height: 100px;
+}
+.take-title{
+  line-height:40px;
+    color:#000000;
+    font-size:1.5em ;
+    font-family: 仿宋体;
+}
+.banner-info .fav1{
+    width: 136px;
+    font-family: 仿宋体;
+    height: 40px;
+    line-height:40px;
+    font-size:1.5em ;
+    background-color: #6f0eb2;
+  margin-bottom: 0px;
+  margin-top: 1px;
+}
+#addtask{
+  color:#f9f9fa ;
+}
+.addtask{
+  color: #6f0eb2;
+  height: 45px;
+  background-color: #6f0eb2;
+  float: right;
+}
+.addtask a{
+  background-color:  #f9f9fa;
+  height: 40px;
+  color: #f9f9fa;
+  font-size: 18px;
+  width:136px;
+  line-height: 40px;
+  text-align: center;
+
+}
+.addtask a:hover{
+  color:#f9f9fa;!important
+  text-decoration:none
+}
+.banner-info .fav2{
+    width: 136px;
+    font-family: 仿宋体;
+    height: 44px;
+    line-height:40px;
+    font-size:1.5em ;
+    background-color: #6f0eb2;
+    margin-bottom: 0px;
+}
+

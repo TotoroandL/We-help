@@ -1,0 +1,26 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: #666666;
+}
+
+main {
+  margin-top: 80px;
+  width: 100%;
+  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+}
+
+main .inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+

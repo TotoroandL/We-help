@@ -1,0 +1,76 @@
+body {
+  background: #f8f8f8;
+  font-size: 14px;
+  font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 28em;
+  min-width: 300px;
+  margin: 100px auto;
+}
+
+form .header {
+  height: auto;
+  width: auto;
+  padding: 5px 16px;
+  background: #417690;
+  line-height: 40px;
+  box-sizing: border-box;
+}
+
+form .header h1 {
+  font-size: 18px;
+  margin: 0;
+  color: #fff;
+}
+
+form .content {
+  padding: 20px 20px 0;
+  min-height: 70px;
+}
+
+.form-row {
+  padding: 4px 0;
+  float: left;
+  width: 100%;
+}
+
+label {
+  padding-right: 0.5em;
+  line-height: 2em;
+  font-size: 1em;
+  clear: both;
+  color: #333;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-row.submit {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.form-row.submit button {
+  background: #79aec8;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}

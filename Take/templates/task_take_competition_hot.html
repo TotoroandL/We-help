@@ -1,0 +1,83 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}热门大赛{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/rec_gd.css' %}" type = "text/css"/>
+    <link rel="stylesheet" href="{% static 'css/index02.css' %}" type = "text/css"/>
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+      <div class="main-inner body-width">
+      <span class="aa"><a href="{% url 'Take:task_take' %}" class="cate"><<返回接单首页</a></span>
+          <div class="banner clearfix" style="height:30%;margin-bottom: 30px">
+              <div class="main-cont main-cate">
+                  <ul class="main-cont__list clearfix">
+                      <li class="item" style=" background: url({% static 'images/dm22.png' %}) no-repeat right; background-size: cover;margin-right: 110px;margin-left: 100px">
+                          <div class="info" >
+                              <a href="{% url 'Take:task_take_competition_hot' %}" class="info-title"><p><b>热&nbsp;门</b></p></a>
+                          </div>
+                      </li>
+                      <li class="item" style=" background: url({% static 'images/dm23.png' %}) no-repeat scroll left; background-size: cover; ">
+                          <div class="info">
+                              <a href="{% url 'Take:task_take_competition' %}" class="info-title"><p><b><u>所&nbsp;有</u></b></p></a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="main-cont main-recommend">
+              <div style="margin: 0px auto;text-align: center;width: 100%;" class= "main-cont__title" >
+                  <h3 style="font-size: 30px;font-weight: 700;">热&nbsp;门&nbsp;大&nbsp;赛</h3>
+                  <p class="list">
+              </div>
+              <ul class="main-cont__list clearfix">
+                  {% if competitionHots %}
+                      {% for competitionHot in competitionHots %}
+                          <li class="item">
+                              <img src="/media/{{ competitionHot.competition_poster }}" alt="#" class="img">
+                              <div class="info">
+                                  <a href="{% url 'Take:task_take_competition_details' competitionHot.competition_id %}" class="title">{{ competitionHot.competition_title}}</a>
+                                  <span><span class="pp">❤</span> {{ competitionHot.competition_colletion_times}}&nbsp;&nbsp;&nbsp;</span>
+                                  <a href="{% url 'Take:task_take_competition_details' competitionHot.competition_id %}" class="icon-text__pink purchase">详情</a>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  {% else %}
+                      <h6>当前还没有热门大赛！</h6>
+                  {% endif %}
+              </ul>
+          <div class="page"  style="width: 20%; margin: 0px auto;">
+                  {% if data %}
+                      <ul id="pages" class="pagination pagination-sm pagination-xs">
+                          {% if data.first %}
+                              <li><a href="?page=1">1</a></li>
+                          {% endif %}
+                          {% if data.left %}
+                              {% if data.left_has_more %}
+                                  <li><span>...</span></li>
+                              {% endif %}
+                              {% for i in data.left %}
+                                  <li><a href="?page={{i}}">{{i}}</a></li>
+                              {% endfor %}
+                          {% endif %}
+                          <li class="active"><a href="?page={{data.page}}">{{data.page}}</a></li>
+                                {% if data.right %}
+                                    {% for i in data.right %}
+                                        <li><a href="?page={{i}}">{{i}}</a></li>
+                                    {% endfor %}
+                                    {% if data.right_has_more %}
+                                        <li><span>...</span></li>
+                                    {% endif %}
+                                {% endif %}
+                          {% if data.last %}
+                              <li><a href="?page={{data.total_pages}}">{{data.total_pages}}</a></li>
+                          {% endif %}
+                    </ul>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock %}

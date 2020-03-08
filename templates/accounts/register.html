@@ -1,0 +1,70 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户注册</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css"/>
+</head>
+<body>
+<div class="cont" >
+    <div class="login-img" >
+        <img src="{% static 'images/logo01.png' %}">
+    </div>
+    <div class="fr" style="padding-top: 6%">
+  <form action="/register/" method="POST">
+    <div class="header">
+      <h1>用户注册</h1>
+    </div>
+    <div class="content">
+      <div class="form-row" style="height: 60px">
+        <label for="username">用户名:</label>
+        <input id='username' name="username" type="text" placeholder="请输入用户名">
+        <span class="error">{{ form.username.errors }}</span>
+      </div>
+      <div class="form-row" style="height: 60px">
+        <label for="name">姓名:</label>
+        <input id='name' name="name" type="text" placeholder="请输入姓名">
+        <span class="error">{{ form.name.errors }}</span>
+      </div>
+      <div class="form-row" style="height: 60px">
+        <label for="college">学院:</label>
+        <input id='college' name="college" type="text" placeholder="请输入学院名">
+        <span class="error">{{ form.college.errors }}</span>
+      </div>
+      <div class="form-row" style="height: 60px">
+        <label for="major">专业:</label>
+        <input id='major' name="major" type="text" placeholder="请输入专业名">
+        <span class="error">{{ form.major.errors }}</span>
+      </div>
+      <div class="form-row" style="height: 60px">
+        <label for="birthday">生日:</label>
+        <input id='birthday' name="birthday" type="date" placeholder="请输入生日">
+        <span class="error">{{ form.birthday.errors }}</span>
+      </div>
+      <div class="form-row" style="height: 60px">
+        <label for="email">邮箱:</label>
+        <input id='email' name="email" type="email" placeholder="请输入邮箱地址">
+        <span class="error">{{ form.email.errors }}</span>
+      </div>
+        <div class="form-row" style="height: 60px">
+        <label for="qq_num">QQ号:</label>
+        <input id='qq_num' name="qq_num" type="text" placeholder="请输入QQ号">
+        <span class="error">{{ form.qq_num.errors }}</span>
+      </div>
+      <div class="form-row">
+        <label for="password">密码:</label>
+        <input id='password' name="password" type="password" placeholder="请输入密码">
+        <span class="error">{{ form.password.errors }}</span>
+      </div>
+      <div class="form-row submit" >
+        <button type="submit">注册</button>
+      </div>
+    </div>
+  </form>
+        </div>
+</body>
+</html>
